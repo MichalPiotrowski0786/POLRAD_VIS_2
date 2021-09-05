@@ -1,5 +1,9 @@
 from ftplib import FTP
 import sys
+import wradlib as wrlb
+
+dbz = []
+vel = []
 
 def scan_from_scan_index(index,arr):
   return arr[index]
@@ -44,7 +48,8 @@ def preload():
     print(f'[{index}] {data_scan}')
 
   scan_index = int(input('Number of scan: '))
-  
+  if(scan_index == -1): scan_index = len(data_scans)-1
+
   global selected_scans
   selected_scans = []
   for scan in scans:
@@ -57,11 +62,25 @@ def load():
     site.retrbinary(f'RETR /{selected_scans[1]}',f1.write,1024)
   site.quit()
 
-def postload():
-  print('XD')
+def compute():
+  dbz = wrlb.io.read_rainbow(f'{sys.path[0]}/data/dbz_temp.vol')
+  vel = wrlb.io.read_rainbow(f'{sys.path[0]}/data/dbz_temp.vol')
+
+  print('Choose dBZ elevation:')
+  for index, slice in enumerate(dbz['volume']['scan']['slice']):
+    print(f'[{index}] '+slice['posangle']+'°')
+  dbz_elevation = int(input('Number of elevation: '))
+
+  print('Choose Velocity elevation:')
+  for index, slice in enumerate(vel['volume']['scan']['slice']):
+    print(f'[{index}] '+slice['posangle']+'°')
+  vel_elevation = int(input('Number of elevation: '))
+
+  print(dbz_elevation,vel_elevation)
 
 site = FTP('daneradarowe.pl')
 site.login()
+
 preload() #load string data from website storage: radars, number of scans, their names etc.
 load() #download data to local machine: both dBZ and Velocity(and maybe CC)
-postload() #decode & process data to get simple info(number of slices/elevations, radar location etc.)
+compute() #decode & process data to get simple info(number of slices/elevations, radar location etc.)
