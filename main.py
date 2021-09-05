@@ -1,4 +1,5 @@
 from ftplib import FTP
+import sys
 
 def scan_from_scan_index(index,arr):
   return arr[index]
@@ -50,7 +51,17 @@ def preload():
     if scan_from_scan_index(scan_index,data_scans_raw) in scan:
       selected_scans.append(scan)
 
+def load():
+  with open(f'{sys.path[0]}/data/dbz_temp.vol','wb') as f0, open(f'{sys.path[0]}/data/vel_temp.vol','wb') as f1:
+    site.retrbinary(f'RETR /{selected_scans[0]}',f0.write,1024)
+    site.retrbinary(f'RETR /{selected_scans[1]}',f1.write,1024)
+  site.quit()
+
+def postload():
+  print('XD')
+
 site = FTP('daneradarowe.pl')
 site.login()
-preload()
-site.close()
+preload() #load string data from website storage: radars, number of scans, their names etc.
+load() #download data to local machine: both dBZ and Velocity(and maybe CC)
+postload() #decode & process data to get simple info(number of slices/elevations, radar location etc.)
