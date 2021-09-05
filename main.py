@@ -1,12 +1,9 @@
 from ftplib import FTP
 
-def scan_from_scan_index(index):
-  print('test')
+def scan_from_scan_index(index,arr):
+  return arr[index]
 
-def main():
-  site = FTP('daneradarowe.pl')
-  site.login()
-
+def preload():
   radars = []
   for name in site.nlst():
     if '125' in name: radars.append(name)
@@ -23,10 +20,12 @@ def main():
     scans.append(raw_scan)
 
   data_scans = []
+  data_scans_raw = []
   for scan in scans:
     scan_str = scan.replace(f'{radars[radar_index]}/','')
     scan_str = scan_str.replace('.vol','')
     scan_str = scan_str[0:14]
+    data_scans_raw.append(scan_str)
 
     year = scan_str[0:4]
     month = scan_str[4:6]
@@ -39,8 +38,19 @@ def main():
     data_scans.append(formatted_str)
 
   data_scans = list(dict.fromkeys(data_scans))
+  data_scans_raw = list(dict.fromkeys(data_scans_raw))
   for index,data_scan in enumerate(data_scans):
     print(f'[{index}] {data_scan}')
 
   scan_index = int(input('Number of scan: '))
-main()
+  
+  global selected_scans
+  selected_scans = []
+  for scan in scans:
+    if scan_from_scan_index(scan_index,data_scans_raw) in scan:
+      selected_scans.append(scan)
+
+site = FTP('daneradarowe.pl')
+site.login()
+preload()
+site.close()
