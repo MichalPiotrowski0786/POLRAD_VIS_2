@@ -145,6 +145,8 @@ def compute():
  
   pl.tight_layout()
   pl.show()
+  open(f'{sys.path[0]}/data/dbz_temp.vol','w').close()
+  open(f'{sys.path[0]}/data/vel_temp.vol','w').close()
 
 def get_cmap(index):
   cmap_type = ''
