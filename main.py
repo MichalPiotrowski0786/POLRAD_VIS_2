@@ -132,7 +132,7 @@ def compute():
     _max_data.append(float(slice['slicedata']['rawdata']['@max']))
 
     _data[i] = _min_data[i] + _data[i] * (_max_data[i] - _min_data[i]) / 2 ** _depth_data[i]
-    get_dump_files(dumpfile_names[i],_data[i])
+    #get_dump_files(dumpfile_names[i],_data[i],r_data[i],azi_data[i],False)
 
     wrlb.vis.plot_ppi(_data[i],r=r_data[i], az=azi_data[i], fig=fig,
     ax=ax[i], vmin=_min_data[i], vmax=_max_data[i],cmap=get_cmap(i))
@@ -170,8 +170,11 @@ def get_dbz_scale():
     else: finalarr.append((dbz_scale['r'][i],dbz_scale['g'][i],dbz_scale['b'][i],1.0))
   return LinearSegmentedColormap.from_list('dbz_cmap',finalarr)
 
-def get_dump_files(name,data):
-  np.savetxt(f'{sys.path[0]}/data/{name}.vol',data,delimiter=';',fmt='%f')
+def get_dump_files(name,data,r_data,azi_data,dataOnly):
+  np.savetxt(f'{sys.path[0]}/data/dump/{name}.vol',data,delimiter=';',fmt='%f')
+  if not dataOnly:
+    np.savetxt(f'{sys.path[0]}/data/dump/{name}_r.vol',r_data,delimiter=';',fmt='%f')
+    np.savetxt(f'{sys.path[0]}/data/dump/{name}_azi.vol',azi_data,delimiter=';',fmt='%f')
 
 site = FTP('daneradarowe.pl')
 site.login()
