@@ -28,7 +28,8 @@ def preload():
   scans = []
   for raw_scan in site.nlst(radars[radar_index]):
     scans.append(raw_scan)
-
+  
+  global data_scans
   data_scans = []
   data_scans_raw = []
   for scan in scans:
@@ -52,6 +53,7 @@ def preload():
   for index,data_scan in enumerate(data_scans):
     print(f'[{index}] {data_scan}')
 
+  global scan_index
   scan_index = int(input('Number of scan: '))
   if(scan_index == -1): scan_index = len(data_scans)-1
 
@@ -91,6 +93,8 @@ def compute():
   ax.append(ax0)
   ax.append(ax1)
 
+  datatype = ['dBZ','Velocity']
+
   for type in data:
     for index, slice in enumerate(type['volume']['scan']['slice']):
       print(f'[{index}] '+slice['posangle']+'°')
@@ -128,14 +132,18 @@ def compute():
 
     _data[i] = _min_data[i] + _data[i] * (_max_data[i] - _min_data[i]) / 2 ** _depth_data[i]
 
-    wrlb.vis.plot_ppi(_data[i],
-    r=r_data[i], 
-    az=azi_data[i], 
-    fig=fig,
-    ax=ax[i], 
-    vmin=_min_data[i], 
-    vmax=_max_data[i],
-    cmap=get_cmap(i))
+    wrlb.vis.plot_ppi(_data[i],r=r_data[i], az=azi_data[i], fig=fig,
+    ax=ax[i], vmin=_min_data[i], vmax=_max_data[i],cmap=get_cmap(i))
+
+    pl.title(f'{datatype[i]} {data_scans[scan_index]}')
+    pl.text(0.5, 0.5, '■', transform=ax[i].transAxes,fontsize=5,ha='center', va='center')
+    pl.text(0.4, 0.015, 'v2.0 src: daneradarowe.pl, IMGW-PIB. vis: MichalP', 
+    transform=ax[i].transAxes,fontsize=10, alpha=0.25,ha='center', va='center')
+
+    ax[i] = pl.gca()
+    ax[i].set_facecolor((0.2,0.2,0.2,1.0))
+ 
+  pl.tight_layout()
   pl.show()
 
 def get_cmap(index):
