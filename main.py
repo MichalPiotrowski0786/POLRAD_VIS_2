@@ -94,6 +94,7 @@ def compute():
   ax.append(ax1)
 
   datatype = ['dBZ','V','RhoHV']
+  dumpfile_names = ['dbz_dump','vel_dump','cc_dump']
 
   for type in data:
     for index, slice in enumerate(type['volume']['scan']['slice']):
@@ -131,6 +132,7 @@ def compute():
     _max_data.append(float(slice['slicedata']['rawdata']['@max']))
 
     _data[i] = _min_data[i] + _data[i] * (_max_data[i] - _min_data[i]) / 2 ** _depth_data[i]
+    get_dump_files(dumpfile_names[i],_data[i])
 
     wrlb.vis.plot_ppi(_data[i],r=r_data[i], az=azi_data[i], fig=fig,
     ax=ax[i], vmin=_min_data[i], vmax=_max_data[i],cmap=get_cmap(i))
@@ -167,6 +169,9 @@ def get_dbz_scale():
     if i == 0: finalarr.append((0.0,0.0,0.0,0.0))
     else: finalarr.append((dbz_scale['r'][i],dbz_scale['g'][i],dbz_scale['b'][i],1.0))
   return LinearSegmentedColormap.from_list('dbz_cmap',finalarr)
+
+def get_dump_files(name,data):
+  np.savetxt(f'{sys.path[0]}/data/{name}.vol',data,delimiter=';',fmt='%f')
 
 site = FTP('daneradarowe.pl')
 site.login()
