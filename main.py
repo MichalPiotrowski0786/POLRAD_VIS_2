@@ -1,6 +1,10 @@
 from ftplib import FTP
 import sys
 import wradlib as wrlb
+import numpy as np
+import matplotlib.pyplot as pl
+import pandas as pd
+from matplotlib.colors import LinearSegmentedColormap
 
 dbz = []
 vel = []
@@ -18,6 +22,7 @@ def preload():
   for index,radar in enumerate(radars):
     print(f'[{index}] {radar}')
   
+  global radar_index
   radar_index = int(input('Number of radar: '))
 
   scans = []
@@ -55,6 +60,7 @@ def preload():
   for scan in scans:
     if scan_from_scan_index(scan_index,data_scans_raw) in scan:
       selected_scans.append(scan)
+  if 'V.vol' in selected_scans[0]: selected_scans.reverse()
 
 def load():
   with open(f'{sys.path[0]}/data/dbz_temp.vol','wb') as f0, open(f'{sys.path[0]}/data/vel_temp.vol','wb') as f1:
@@ -63,20 +69,94 @@ def load():
   site.quit()
 
 def compute():
-  dbz = wrlb.io.read_rainbow(f'{sys.path[0]}/data/dbz_temp.vol')
-  vel = wrlb.io.read_rainbow(f'{sys.path[0]}/data/dbz_temp.vol')
+  data = []
+  elevation_data = []
 
-  print('Choose dBZ elevation:')
-  for index, slice in enumerate(dbz['volume']['scan']['slice']):
-    print(f'[{index}] '+slice['posangle']+'°')
-  dbz_elevation = int(input('Number of elevation: '))
+  azi_data = []
+  azi_depth_data = []
+  azi_rays_data = []
 
-  print('Choose Velocity elevation:')
-  for index, slice in enumerate(vel['volume']['scan']['slice']):
-    print(f'[{index}] '+slice['posangle']+'°')
-  vel_elevation = int(input('Number of elevation: '))
+  r_data = []
+  _data = []
+  _depth_data = []
+  _min_data = []
+  _max_data = []
 
-  print(dbz_elevation,vel_elevation)
+  data.append(wrlb.io.read_rainbow(f'{sys.path[0]}/data/dbz_temp.vol'))
+  data.append(wrlb.io.read_rainbow(f'{sys.path[0]}/data/vel_temp.vol'))
+
+  ax = []
+  fig, (ax0,ax1) = pl.subplots(1,2,sharex=True,sharey=True,figsize=(16,8))
+
+  ax.append(ax0)
+  ax.append(ax1)
+
+  for type in data:
+    for index, slice in enumerate(type['volume']['scan']['slice']):
+      print(f'[{index}] '+slice['posangle']+'°')
+    elevation_data.append(int(input('Number of elevation: ')))
+
+  for i,type in enumerate(data):
+    slice = type['volume']['scan']['slice'][elevation_data[i]]
+    if(radar_index == 6):
+      azi_data.append(slice['slicedata']['rayinfo'][0]['data'])
+      azi_depth_data.append(float(slice['slicedata']['rayinfo'][0]['@depth']))
+      azi_rays_data.append(float(slice['slicedata']['rayinfo'][0]['@rays']))
+    else:
+      azi_data.append(slice['slicedata']['rayinfo']['data'])
+      azi_depth_data.append(float(slice['slicedata']['rayinfo']['@depth']))
+      azi_rays_data.append(float(slice['slicedata']['rayinfo']['@rays']))
+    
+    anglestep = 1
+    if 'anglestep' in slice:
+      anglestep = float(slice['anglestep'])
+    azi_data[i] = (azi_data[i] * azi_rays_data[i] / 2**azi_depth_data[i]) * anglestep
+
+    stop_range = 125
+    if 'stoprange' in slice:
+      stop_range = float(slice['stoprange'])
+
+    range_step = 0.5
+    if 'rangestep' in slice:
+      range_step = float(slice['rangestep'])
+    r_data.append(np.arange(0, stop_range, range_step))
+
+    _data.append(slice['slicedata']['rawdata']['data'])
+    _depth_data.append(float(slice['slicedata']['rawdata']['@depth']))
+    _min_data.append(float(slice['slicedata']['rawdata']['@min']))
+    _max_data.append(float(slice['slicedata']['rawdata']['@max']))
+
+    _data[i] = _min_data[i] + _data[i] * (_max_data[i] - _min_data[i]) / 2 ** _depth_data[i]
+
+    wrlb.vis.plot_ppi(_data[i],
+    r=r_data[i], 
+    az=azi_data[i], 
+    fig=fig,
+    ax=ax[i], 
+    vmin=_min_data[i], 
+    vmax=_max_data[i],
+    cmap=get_cmap(i))
+  pl.show()
+
+def get_cmap(index):
+  cmap_type = ''
+  if(index == 0): cmap_type = 'dbz'
+  if(index == 1): cmap_type = 'vel'
+  if(index == 2): cmap_type = 'cc'
+  scale = np.divide(pd.read_csv(sys.path[0]+f'/data/{cmap_type}.csv',delimiter=','),255)
+  finalarr = []
+  for i in range(int(len(scale))):
+    if i == 0: finalarr.append((0.0,0.0,0.0,0.0))
+    else: finalarr.append((scale['r'][i],scale['g'][i],scale['b'][i],1.0))
+  return LinearSegmentedColormap.from_list('cmap',finalarr)
+
+def get_dbz_scale():
+  dbz_scale = np.divide(pd.read_csv(sys.path[0]+'/data/dbz.csv',delimiter=','),255)
+  finalarr = []
+  for i in range(int(len(dbz_scale))):
+    if i == 0: finalarr.append((0.0,0.0,0.0,0.0))
+    else: finalarr.append((dbz_scale['r'][i],dbz_scale['g'][i],dbz_scale['b'][i],1.0))
+  return LinearSegmentedColormap.from_list('dbz_cmap',finalarr)
 
 site = FTP('daneradarowe.pl')
 site.login()
