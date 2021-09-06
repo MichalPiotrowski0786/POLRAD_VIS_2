@@ -93,7 +93,7 @@ def compute():
   ax.append(ax0)
   ax.append(ax1)
 
-  datatype = ['dBZ','Velocity']
+  datatype = ['dBZ','V','RhoHV']
 
   for type in data:
     for index, slice in enumerate(type['volume']['scan']['slice']):
@@ -135,7 +135,7 @@ def compute():
     wrlb.vis.plot_ppi(_data[i],r=r_data[i], az=azi_data[i], fig=fig,
     ax=ax[i], vmin=_min_data[i], vmax=_max_data[i],cmap=get_cmap(i))
 
-    pl.title(f'{datatype[i]} {data_scans[scan_index]}')
+    pl.title(f'[{datatype[i]}] {data_scans[scan_index]}')
     pl.text(0.5, 0.5, '■', transform=ax[i].transAxes,fontsize=5,ha='center', va='center')
     pl.text(0.4, 0.015, 'v2.0 src: daneradarowe.pl, IMGW-PIB. vis: MichalP', 
     transform=ax[i].transAxes,fontsize=10, alpha=0.25,ha='center', va='center')
