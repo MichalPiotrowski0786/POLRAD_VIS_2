@@ -1,5 +1,6 @@
 from ftplib import FTP
 import sys
+from numpy.core.fromnumeric import shape
 import wradlib as wrlb
 import numpy as np
 import matplotlib.pyplot as pl
@@ -55,7 +56,7 @@ def preload():
 
   global scan_index
   scan_index = int(input('Number of scan: '))
-  if(scan_index == -1): scan_index = len(data_scans)-1
+  #if(scan_index == -1): scan_index = len(data_scans)-1
 
   global selected_scans
   selected_scans = []
@@ -101,6 +102,8 @@ def compute():
       print(f'[{index}] '+slice['posangle']+'°')
     elevation_data.append(int(input('Number of elevation: ')))
 
+  useDeclutter = int(input('Use decluttering algorithm? [0 - YES] [1 - NO]: '))
+
   for i,type in enumerate(data):
     slice = type['volume']['scan']['slice'][elevation_data[i]]
     if(radar_index == 6):
@@ -134,8 +137,16 @@ def compute():
     _data[i] = _min_data[i] + _data[i] * (_max_data[i] - _min_data[i]) / 2 ** _depth_data[i]
     #get_dump_files(dumpfile_names[i],_data[i],r_data[i],azi_data[i],False)
 
-    wrlb.vis.plot_ppi(_data[i],r=r_data[i], az=azi_data[i], fig=fig,
-    ax=ax[i], vmin=_min_data[i], vmax=_max_data[i],cmap=get_cmap(i))
+    if(useDeclutter == 0 and i == 0):
+      clmap = wrlb.clutter.filter_gabella(_data[0]).astype(int)
+      clmap1 = np.where((clmap==0)|(clmap==1), clmap^1, clmap)
+      _data[0] = _data[0]*clmap1 
+
+      clmap = clmap*_min_data[0]
+      _data[0] = _data[0]+clmap
+
+
+    wrlb.vis.plot_ppi(_data[i],r=r_data[i], az=azi_data[i], fig=fig,ax=ax[i], vmin=_min_data[i], vmax=_max_data[i],cmap=get_cmap(i))
 
     pl.title(f'[{datatype[i]}] {data_scans[scan_index]}')
     pl.text(0.5, 0.5, '■', transform=ax[i].transAxes,fontsize=5,ha='center', va='center')
