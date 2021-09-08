@@ -6,6 +6,7 @@ import numpy as np
 import matplotlib.pyplot as pl
 import pandas as pd
 from matplotlib.colors import LinearSegmentedColormap
+import cartopy.crs as ccrs
 
 dbz = []
 vel = []
@@ -14,6 +15,7 @@ def scan_from_scan_index(index,arr):
   return arr[index]
 
 def preload():
+  global radars
   radars = []
   for name in site.nlst():
     if '125' in name: radars.append(name)
@@ -88,11 +90,8 @@ def compute():
   data.append(wrlb.io.read_rainbow(f'{sys.path[0]}/data/dbz_temp.vol'))
   data.append(wrlb.io.read_rainbow(f'{sys.path[0]}/data/vel_temp.vol'))
 
-  ax = []
   fig, (ax0,ax1) = pl.subplots(1,2,sharex=True,sharey=True,figsize=(16,8))
-
-  ax.append(ax0)
-  ax.append(ax1)
+  ax = [ax0,ax1]
 
   datatype = ['dBZ','V','RhoHV']
   dumpfile_names = ['dbz_dump','vel_dump','cc_dump']
@@ -145,16 +144,14 @@ def compute():
       clmap = clmap*_min_data[0]
       _data[0] = _data[0]+clmap
 
-
     wrlb.vis.plot_ppi(_data[i],r=r_data[i], az=azi_data[i], fig=fig,ax=ax[i], vmin=_min_data[i], vmax=_max_data[i],cmap=get_cmap(i))
 
-    pl.title(f'[{datatype[i]}] {data_scans[scan_index]}')
-    pl.text(0.5, 0.5, '■', transform=ax[i].transAxes,fontsize=5,ha='center', va='center')
-    pl.text(0.4, 0.015, 'v2.0 src: daneradarowe.pl, IMGW-PIB. vis: MichalP', 
-    transform=ax[i].transAxes,fontsize=10, alpha=0.25,ha='center', va='center')
+    pl.title(f'[{radars[radar_index][0:3]}][{datatype[i]}] {data_scans[scan_index]}')
+    pl.text(0.5, 0.5, 'X', transform=ax[i].transAxes,fontsize=10,ha='center', va='center')
+    pl.text(0.4, 0.015, 'v2.0 src: daneradarowe.pl, IMGW-PIB. vis: MichalP', transform=ax[i].transAxes,fontsize=10, alpha=0.25,ha='center', va='center')
 
     ax[i] = pl.gca()
-    ax[i].set_facecolor((0.2,0.2,0.2,1.0))
+    ax[i].set_facecolor((0.2,0.2,0.2))
  
   pl.tight_layout()
   pl.show()
