@@ -1,12 +1,10 @@
 from ftplib import FTP
 import sys
-from numpy.core.fromnumeric import shape
 import wradlib as wrlb
 import numpy as np
 import matplotlib.pyplot as pl
 import pandas as pd
 from matplotlib.colors import LinearSegmentedColormap
-import cartopy.crs as ccrs
 
 dbz = []
 vel = []
@@ -58,7 +56,6 @@ def preload():
 
   global scan_index
   scan_index = int(input('Number of scan: '))
-  #if(scan_index == -1): scan_index = len(data_scans)-1
 
   global selected_scans
   selected_scans = []
@@ -68,9 +65,15 @@ def preload():
   if 'V.vol' in selected_scans[0]: selected_scans.reverse()
 
 def load():
-  with open(f'{sys.path[0]}/data/dbz_temp.vol','wb') as f0, open(f'{sys.path[0]}/data/vel_temp.vol','wb') as f1:
-    site.retrbinary(f'RETR /{selected_scans[0]}',f0.write,1024)
-    site.retrbinary(f'RETR /{selected_scans[1]}',f1.write,1024)
+  global names_for_loop
+  names_for_loop = ['dbz','vel','cc']
+
+  for scan,name in zip(selected_scans,names_for_loop):
+    with open(f'{sys.path[0]}/data/{name}_temp.vol','wb') as f:
+      site.retrbinary(f'RETR /{scan}',f.write,1024)
+
+  global selected_scans_len 
+  selected_scans_len = len(selected_scans)
   site.quit()
 
 def compute():
@@ -87,11 +90,11 @@ def compute():
   _min_data = []
   _max_data = []
 
-  data.append(wrlb.io.read_rainbow(f'{sys.path[0]}/data/dbz_temp.vol'))
-  data.append(wrlb.io.read_rainbow(f'{sys.path[0]}/data/vel_temp.vol'))
+  for i in range(selected_scans_len):
+    data.append(wrlb.io.read_rainbow(f'{sys.path[0]}/data/{names_for_loop[i]}_temp.vol'))
 
-  fig, (ax0,ax1) = pl.subplots(1,2,sharex=True,sharey=True,figsize=(16,8))
-  ax = [ax0,ax1]
+  ax = []
+  fig, ax = pl.subplots(1,selected_scans_len,sharex=True,sharey=True,figsize=(16,8))
 
   datatype = ['dBZ','V','RhoHV']
   dumpfile_names = ['dbz_dump','vel_dump','cc_dump']
@@ -155,8 +158,10 @@ def compute():
  
   pl.tight_layout()
   pl.show()
+
   open(f'{sys.path[0]}/data/dbz_temp.vol','w').close()
   open(f'{sys.path[0]}/data/vel_temp.vol','w').close()
+  open(f'{sys.path[0]}/data/cc_temp.vol','w').close()
 
 def get_cmap(index):
   cmap_type = ''
