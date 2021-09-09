@@ -97,7 +97,7 @@ def compute():
   fig, ax = pl.subplots(1,selected_scans_len,sharex=True,sharey=True,figsize=(14,8))
 
   datatype = ['dBZ','V','RhoHV']
-  datatype_colorbar = ['dBZ','m/s','%']
+  datatype_colorbar = ['dBZ','m/s','%x100']
   dumpfile_names = ['dbz_dump','vel_dump','cc_dump']
 
   for type in data:
@@ -140,18 +140,18 @@ def compute():
 
     cgax,pm = wrlb.vis.plot_ppi(_data[i],r=r_data[i], az=azi_data[i], fig=fig,ax=ax[i], vmin=_min_data[i], vmax=_max_data[i],cmap=get_cmap(i))
 
-    pl.title(f'[{radars[radar_index][0:3]}][{datatype[i]}] {data_scans[scan_index]}')
-    pl.text(0.5, 0.5, 'X', transform=ax[i].transAxes,fontsize=10,ha='center', va='center')
-    pl.text(0.4, 0.015, 'v2.0 src: daneradarowe.pl, IMGW-PIB. vis: MichalP', transform=ax[i].transAxes,fontsize=10, alpha=0.25,ha='center', va='center')
+    posangle = slice['posangle']
+    pl.title(f'[{radars[radar_index][0:3]}][{datatype[i]}][{posangle}°] {data_scans[scan_index]}')
+    pl.text(0.5, 0.5, 'x', transform=ax[i].transAxes,fontsize=10,ha='center', va='center')
+    pl.text(0.4, 0.015, 'v2.0 src: daneradarowe.pl, IMGW-PIB. vis: MichalP', transform=ax[i].transAxes,fontsize=int(24/selected_scans_len), alpha=0.25,ha='center', va='center')
 
-    ax[i].set_yticks([])
-    ax[i].set_xticks([])
-    ax[i] = pl.gca()
-    ax[i].set_facecolor((0.2,0.2,0.2))
+    cgax.set_yticks([])
+    cgax.set_xticks([])
+    cgax.set_facecolor((0.2,0.2,0.2))
 
-    cbar = pl.gcf().colorbar(pm,orientation='horizontal',shrink=0.7,pad=0.05)
+    linspace_colorbar = np.linspace(_min_data[i], _max_data[i], 10, endpoint=True)
+    cbar = pl.gcf().colorbar(pm,orientation='horizontal',shrink=0.7,pad=0.05,ticks=linspace_colorbar)  
     cbar.set_label(datatype_colorbar[i])
-    cbar.minorticks_on()
 
     open(f'{sys.path[0]}/data/{names_for_loop[i]}_temp.vol','w').close()
  
@@ -169,14 +169,6 @@ def get_cmap(index):
     if i == 0: finalarr.append((0.0,0.0,0.0,0.0))
     else: finalarr.append((scale['r'][i],scale['g'][i],scale['b'][i],1.0))
   return LinearSegmentedColormap.from_list('cmap',finalarr)
-
-def get_dbz_scale():
-  dbz_scale = np.divide(pd.read_csv(sys.path[0]+'/data/dbz.csv',delimiter=','),255)
-  finalarr = []
-  for i in range(int(len(dbz_scale))):
-    if i == 0: finalarr.append((0.0,0.0,0.0,0.0))
-    else: finalarr.append((dbz_scale['r'][i],dbz_scale['g'][i],dbz_scale['b'][i],1.0))
-  return LinearSegmentedColormap.from_list('dbz_cmap',finalarr)
 
 def get_dump_files(name,data,r_data,azi_data,dataOnly):
   np.savetxt(f'{sys.path[0]}/data/dump/{name}.vol',data,delimiter=';',fmt='%f')
