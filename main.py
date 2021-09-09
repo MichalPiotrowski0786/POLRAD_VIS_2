@@ -97,15 +97,13 @@ def compute():
   fig, ax = pl.subplots(1,selected_scans_len,sharex=True,sharey=True,figsize=(14,8))
 
   datatype = ['dBZ','V','RhoHV']
+  datatype_colorbar = ['dBZ','m/s','%']
   dumpfile_names = ['dbz_dump','vel_dump','cc_dump']
 
   for type in data:
     for index, slice in enumerate(type['volume']['scan']['slice']):
       print(f'[{index}] '+slice['posangle']+'°')
     elevation_data.append(int(input('Number of elevation: ')))
-
-  # useDeclutter = int(input('Use decluttering algorithm? [0 - YES] [1 - NO]: '))
-  useDeclutter = 0
 
   for i,type in enumerate(data):
     slice = type['volume']['scan']['slice'][elevation_data[i]]
@@ -140,15 +138,7 @@ def compute():
     _data[i] = _min_data[i] + _data[i] * (_max_data[i] - _min_data[i]) / 2 ** _depth_data[i]
     #get_dump_files(dumpfile_names[i],_data[i],r_data[i],azi_data[i],False)
 
-    if(useDeclutter == 0 and i == 0):
-      clmap = wrlb.clutter.filter_gabella(_data[0],tr1=10.0).astype(int)
-      clmap1 = np.where((clmap==0)|(clmap==1), clmap^1, clmap)
-      _data[0] = _data[0]*clmap1 
-
-      clmap = clmap*_min_data[0]
-      _data[0] = _data[0]+clmap
-
-    wrlb.vis.plot_ppi(_data[i],r=r_data[i], az=azi_data[i], fig=fig,ax=ax[i], vmin=_min_data[i], vmax=_max_data[i],cmap=get_cmap(i))
+    cgax,pm = wrlb.vis.plot_ppi(_data[i],r=r_data[i], az=azi_data[i], fig=fig,ax=ax[i], vmin=_min_data[i], vmax=_max_data[i],cmap=get_cmap(i))
 
     pl.title(f'[{radars[radar_index][0:3]}][{datatype[i]}] {data_scans[scan_index]}')
     pl.text(0.5, 0.5, 'X', transform=ax[i].transAxes,fontsize=10,ha='center', va='center')
@@ -158,6 +148,10 @@ def compute():
     ax[i].set_xticks([])
     ax[i] = pl.gca()
     ax[i].set_facecolor((0.2,0.2,0.2))
+
+    cbar = pl.gcf().colorbar(pm,orientation='horizontal',shrink=0.7,pad=0.05)
+    cbar.set_label(datatype_colorbar[i])
+    cbar.minorticks_on()
 
     open(f'{sys.path[0]}/data/{names_for_loop[i]}_temp.vol','w').close()
  
