@@ -94,7 +94,7 @@ def compute():
     data.append(wrlb.io.read_rainbow(f'{sys.path[0]}/data/{names_for_loop[i]}_temp.vol'))
 
   ax = []
-  fig, ax = pl.subplots(1,selected_scans_len,sharex=True,sharey=True,figsize=(16,8))
+  fig, ax = pl.subplots(1,selected_scans_len,sharex=True,sharey=True,figsize=(14,8))
 
   datatype = ['dBZ','V','RhoHV']
   dumpfile_names = ['dbz_dump','vel_dump','cc_dump']
@@ -104,7 +104,8 @@ def compute():
       print(f'[{index}] '+slice['posangle']+'°')
     elevation_data.append(int(input('Number of elevation: ')))
 
-  useDeclutter = int(input('Use decluttering algorithm? [0 - YES] [1 - NO]: '))
+  # useDeclutter = int(input('Use decluttering algorithm? [0 - YES] [1 - NO]: '))
+  useDeclutter = 0
 
   for i,type in enumerate(data):
     slice = type['volume']['scan']['slice'][elevation_data[i]]
@@ -153,15 +154,15 @@ def compute():
     pl.text(0.5, 0.5, 'X', transform=ax[i].transAxes,fontsize=10,ha='center', va='center')
     pl.text(0.4, 0.015, 'v2.0 src: daneradarowe.pl, IMGW-PIB. vis: MichalP', transform=ax[i].transAxes,fontsize=10, alpha=0.25,ha='center', va='center')
 
+    ax[i].set_yticks([])
+    ax[i].set_xticks([])
     ax[i] = pl.gca()
     ax[i].set_facecolor((0.2,0.2,0.2))
+
+    open(f'{sys.path[0]}/data/{names_for_loop[i]}_temp.vol','w').close()
  
   pl.tight_layout()
   pl.show()
-
-  open(f'{sys.path[0]}/data/dbz_temp.vol','w').close()
-  open(f'{sys.path[0]}/data/vel_temp.vol','w').close()
-  open(f'{sys.path[0]}/data/cc_temp.vol','w').close()
 
 def get_cmap(index):
   cmap_type = ''
