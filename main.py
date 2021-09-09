@@ -141,7 +141,7 @@ def compute():
     #get_dump_files(dumpfile_names[i],_data[i],r_data[i],azi_data[i],False)
 
     if(useDeclutter == 0 and i == 0):
-      clmap = wrlb.clutter.filter_gabella(_data[0]).astype(int)
+      clmap = wrlb.clutter.filter_gabella(_data[0],tr1=10.0).astype(int)
       clmap1 = np.where((clmap==0)|(clmap==1), clmap^1, clmap)
       _data[0] = _data[0]*clmap1 
 
