@@ -1,7 +1,7 @@
 # POLRAD_VIS_2 - Visualizer of radar data(mainly reflectivity and velocity) from POLRAD system
 
-Data source: IMGW-PiB via ftp.daneradarowe.pl
-Author: Michał Piotrowski
+Data source: IMGW-PiB via ftp.daneradarowe.pl \n
+Author: Michał Piotrowski \n
 Language: Python 3.9
 
 Libraries used: 
