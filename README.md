@@ -5,11 +5,11 @@ Author: Michał Piotrowski
 Language: Python 3.9
 
 Libraries used: 
-  -matplotlib[https://pypi.org/project/matplotlib], 
-  -wradlib[https://pypi.org/project/wradlib], 
-  -numpy[https://pypi.org/project/numpy], 
-  -ftplib[built-in],
-  -pandas[https://pypi.org/project/pandas]
+  - matplotlib[https://pypi.org/project/matplotlib], 
+  - wradlib[https://pypi.org/project/wradlib], 
+  - numpy[https://pypi.org/project/numpy], 
+  - ftplib[built-in],
+  - pandas[https://pypi.org/project/pandas]
   
 TO-DO(must):
   - GUI
