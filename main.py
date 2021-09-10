@@ -154,9 +154,10 @@ def compute():
     cbar.set_label(datatype_colorbar[i])
 
     open(f'{sys.path[0]}/data/{names_for_loop[i]}_temp.vol','w').close()
- 
+
   pl.tight_layout()
   pl.show()
+
 
 def get_cmap(index):
   cmap_type = ''
@@ -174,7 +175,7 @@ def get_dump_files(name,data,r_data,azi_data,dataOnly):
   np.savetxt(f'{sys.path[0]}/data/dump/{name}.vol',data,delimiter=';',fmt='%f')
   if not dataOnly:
     np.savetxt(f'{sys.path[0]}/data/dump/{name}_r.vol',r_data,delimiter=';',fmt='%f')
-    np.savetxt(f'{sys.path[0]}/data/dump/{name}_azi.vol',azi_data,delimiter=';',fmt='%f')
+    np.savetxt(f'{sys.path[0]}/data/dump/{name}_azi.vol',azi_data,delimiter=';',fmt='%f') 
 
 site = FTP('daneradarowe.pl')
 site.login()
