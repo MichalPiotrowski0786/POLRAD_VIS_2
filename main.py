@@ -149,7 +149,7 @@ def compute():
     cgax.set_xticks([])
     cgax.set_facecolor((0.2,0.2,0.2))
 
-    linspace_colorbar = np.linspace(_min_data[i], _max_data[i], 10, endpoint=True)
+    linspace_colorbar = np.linspace(_min_data[i], _max_data[i], int(24/selected_scans_len), endpoint=True)
     cbar = pl.gcf().colorbar(pm,orientation='horizontal',shrink=0.7,pad=0.05,ticks=linspace_colorbar)  
     cbar.set_label(datatype_colorbar[i])
 
