@@ -151,6 +151,7 @@ def compute():
 
     linspace_colorbar = np.linspace(_min_data[i], _max_data[i], int(24/selected_scans_len), endpoint=True)
     cbar = pl.gcf().colorbar(pm,orientation='horizontal',shrink=0.7,pad=0.05,ticks=linspace_colorbar)  
+    cbar.ax.tick_params(labelsize=7)
     cbar.set_label(datatype_colorbar[i])
 
     open(f'{sys.path[0]}/data/{names_for_loop[i]}_temp.vol','w').close()
