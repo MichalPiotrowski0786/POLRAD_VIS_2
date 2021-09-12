@@ -78,7 +78,7 @@ def load():
 
 def compute():
   data = []
-  elevation_data = []
+  elevation_data = 0
 
   azi_data = []
   azi_depth_data = []
@@ -100,13 +100,12 @@ def compute():
   datatype_colorbar = ['dBZ','m/s','%x100']
   dumpfile_names = ['dbz_dump','vel_dump','cc_dump']
 
-  for type in data:
-    for index, slice in enumerate(type['volume']['scan']['slice']):
-      print(f'[{index}] '+slice['posangle']+'°')
-    elevation_data.append(int(input('Number of elevation: ')))
+  for index, slice in enumerate(data[0]['volume']['scan']['slice']):
+    print(f'[{index}] '+slice['posangle']+'°')
+  elevation_data = (int(input('Number of elevation: ')))
 
   for i,type in enumerate(data):
-    slice = type['volume']['scan']['slice'][elevation_data[i]]
+    slice = type['volume']['scan']['slice'][elevation_data]
     if(radar_index == 6):
       azi_data.append(slice['slicedata']['rayinfo'][0]['data'])
       azi_depth_data.append(float(slice['slicedata']['rayinfo'][0]['@depth']))
