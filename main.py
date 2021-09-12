@@ -138,6 +138,23 @@ def compute():
     _data[i] = _min_data[i] + _data[i] * (_max_data[i] - _min_data[i]) / 2 ** _depth_data[i]
     #get_dump_files(dumpfile_names[i],_data[i],r_data[i],azi_data[i],False)
 
+    if(i == 1): 
+      _srv = read_test_srv()
+
+      min_srv_value = min(_srv[0])
+      if(min_srv_value > 0): min_srv_value *= -1 
+      min_vel_value = _min_data[i]-min_srv_value
+
+      _data[i] = np.subtract(_data[i],_srv)
+      _data[i][_data[i] <= min_vel_value] = _min_data[i]
+
+    # if(i == 1): 
+    #   _data[i] = read_test_srv()
+    #   azi_data[i] = None
+
+    # if(i == 1): 
+    #   azi_data[i] = None
+
     cgax,pm = wrlb.vis.plot_ppi(_data[i],r=r_data[i], az=azi_data[i], fig=fig,ax=ax[i], vmin=_min_data[i], vmax=_max_data[i],cmap=get_cmap(i))
 
     posangle = slice['posangle']
@@ -176,7 +193,11 @@ def get_dump_files(name,data,r_data,azi_data,dataOnly):
   np.savetxt(f'{sys.path[0]}/data/dump/{name}.vol',data,delimiter=';',fmt='%f')
   if not dataOnly:
     np.savetxt(f'{sys.path[0]}/data/dump/{name}_r.vol',r_data,delimiter=';',fmt='%f')
-    np.savetxt(f'{sys.path[0]}/data/dump/{name}_azi.vol',azi_data,delimiter=';',fmt='%f') 
+    np.savetxt(f'{sys.path[0]}/data/dump/{name}_azi.vol',azi_data,delimiter=';',fmt='%f')
+
+def read_test_srv(): 
+  file = np.loadtxt(f'{sys.path[0]}/data/SRV_test.txt')
+  return file
 
 site = FTP('daneradarowe.pl')
 site.login()
