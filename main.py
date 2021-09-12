@@ -138,15 +138,15 @@ def compute():
     _data[i] = _min_data[i] + _data[i] * (_max_data[i] - _min_data[i]) / 2 ** _depth_data[i]
     #get_dump_files(dumpfile_names[i],_data[i],r_data[i],azi_data[i],False)
 
-    if(i == 1): 
-      _srv = read_test_srv()
+    # if(i == 1): 
+    #   _srv = read_test_srv()
+    #   print(len(r_data[i]))
+    #   min_srv_value = min(_srv[0])
+    #   if(min_srv_value > 0): min_srv_value *= -1 
+    #   min_vel_value = _min_data[i]-min_srv_value
 
-      min_srv_value = min(_srv[0])
-      if(min_srv_value > 0): min_srv_value *= -1 
-      min_vel_value = _min_data[i]-min_srv_value
-
-      _data[i] = np.subtract(_data[i],_srv)
-      _data[i][_data[i] <= min_vel_value] = _min_data[i]
+    #   _data[i] = np.subtract(_data[i],_srv)
+    #   _data[i][_data[i] <= min_vel_value] = _min_data[i]
 
     # if(i == 1): 
     #   _data[i] = read_test_srv()
@@ -154,6 +154,9 @@ def compute():
 
     # if(i == 1): 
     #   azi_data[i] = None
+
+    # if(i == 1): 
+    #   _data[i] = SRV(_data[i],azi_data[i],len(azi_data[i]),_min_data[i])
 
     cgax,pm = wrlb.vis.plot_ppi(_data[i],r=r_data[i], az=azi_data[i], fig=fig,ax=ax[i], vmin=_min_data[i], vmax=_max_data[i],cmap=get_cmap(i))
 
@@ -194,6 +197,27 @@ def get_dump_files(name,data,r_data,azi_data,dataOnly):
   if not dataOnly:
     np.savetxt(f'{sys.path[0]}/data/dump/{name}_r.vol',r_data,delimiter=';',fmt='%f')
     np.savetxt(f'{sys.path[0]}/data/dump/{name}_azi.vol',azi_data,delimiter=';',fmt='%f')
+
+def SRV(velocity,azi,rays,min_data):
+  arr = np.array(velocity)
+  arr = np.multiply(arr,0)
+  arr = np.add(arr,1)
+
+  thetas = np.deg2rad(azi)
+  speed = 5.0;
+  for i in range(rays):
+    if(thetas[i] < np.pi): thetas[i] = speed;
+    else: thetas[i] = -speed;
+    print(thetas[i])
+
+  for i in range(rays):
+    arr[i] = np.multiply(arr[i],thetas[i]);
+  
+  arr = np.subtract(velocity,arr)
+  diff = min_data+speed
+  arr[arr == diff] = min_data
+
+  return arr
 
 def read_test_srv(): 
   file = np.loadtxt(f'{sys.path[0]}/data/SRV_test.txt')
