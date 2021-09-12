@@ -97,7 +97,7 @@ def compute():
   fig, ax = pl.subplots(1,selected_scans_len,sharex=True,sharey=True,figsize=(14,8))
 
   datatype = ['dBZ','V','RhoHV']
-  datatype_colorbar = ['dBZ','m/s','%x100']
+  datatype_colorbar = ['dBZ','m/s','%']
   dumpfile_names = ['dbz_dump','vel_dump','cc_dump']
 
   for index, slice in enumerate(data[0]['volume']['scan']['slice']):
@@ -135,6 +135,10 @@ def compute():
     _max_data.append(float(slice['slicedata']['rawdata']['@max']))
 
     _data[i] = _min_data[i] + _data[i] * (_max_data[i] - _min_data[i]) / 2 ** _depth_data[i]
+
+    if(i == 2): #scale CC(RhoHV) from 0-1 to 0-100(for colorbar)
+      _data[i] = np.multiply(_data[i],100)
+      _max_data[i] = np.multiply(_max_data[i],100)
     #get_dump_files(dumpfile_names[i],_data[i],r_data[i],azi_data[i],False)
 
     # if(i == 1): 
