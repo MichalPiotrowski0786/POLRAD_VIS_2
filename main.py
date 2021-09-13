@@ -22,13 +22,12 @@ def preload():
   for name in site.nlst():
     if '125' in name: radars.append(name)
 
-  # print('Select radar:')
-  # for index,radar in enumerate(radars):
-  #   print(f'[{index}] {radar}')
+  print('Select radar:')
+  for index,radar in enumerate(radars):
+    print(f'[{index}] {radar}')
   
   global radar_index
-  #radar_index = int(input('Number of radar: '))
-  radar_index = 0
+  radar_index = int(input('Number of radar: '))
 
   scans = []
   for raw_scan in site.nlst(radars[radar_index]):
@@ -55,12 +54,11 @@ def preload():
 
   data_scans = list(dict.fromkeys(data_scans))
   data_scans_raw = list(dict.fromkeys(data_scans_raw))
-  # for index,data_scan in enumerate(data_scans):
-  #   print(f'[{index}] {data_scan}')
+  for index,data_scan in enumerate(data_scans):
+    print(f'[{index}] {data_scan}')
 
   global scan_index
-  #scan_index = int(input('Number of scan: '))
-  scan_index = -1
+  scan_index = int(input('Number of scan: '))
 
   global selected_scans
   selected_scans = []
@@ -95,10 +93,8 @@ def compute():
   _min_data = []
   _max_data = []
 
-  # for i in range(selected_scans_len):
-  #   data.append(wrlb.io.read_rainbow(f'{sys.path[0]}/data/{names_for_loop[i]}_temp.vol'))
-  data.append(wrlb.io.read_rainbow(f'{sys.path[0]}/data/vel_temp.vol'))
-  data.append(wrlb.io.read_rainbow(f'{sys.path[0]}/data/vel_temp.vol'))
+  for i in range(selected_scans_len):
+    data.append(wrlb.io.read_rainbow(f'{sys.path[0]}/data/{names_for_loop[i]}_temp.vol'))
 
   ax = []
   fig, ax = pl.subplots(1,selected_scans_len,sharex=True,sharey=True,figsize=(14,8))
@@ -107,10 +103,9 @@ def compute():
   datatype_colorbar = ['dBZ','m/s','%']
   dumpfile_names = ['dbz_dump','vel_dump','cc_dump']
 
-  # for index, slice in enumerate(data[0]['volume']['scan']['slice']):
-  #   print(f'[{index}] '+slice['posangle']+'°')
-  #elevation_data = (int(input('Number of elevation: ')))
-  elevation_data = 0
+  for index, slice in enumerate(data[0]['volume']['scan']['slice']):
+    print(f'[{index}] '+slice['posangle']+'°')
+  elevation_data = (int(input('Number of elevation: ')))
 
   for i,type in enumerate(data):
     slice = type['volume']['scan']['slice'][elevation_data]
@@ -144,16 +139,15 @@ def compute():
 
     _data[i] = _min_data[i] + _data[i] * (_max_data[i] - _min_data[i]) / 2 ** _depth_data[i]
 
-    #if(i == 0): azi_data[i] = None
     if(i == 1):
       spd = float(input('speed: '))
-      dir = float(input('direction(0:N 90:E 180:S 270:W): '))
-      dir = np.deg2rad(dir)
+      if(spd > 0):       
+        dir = float(input('direction(0:N 90:E 180:S 270:W): '))
+        dir = np.deg2rad(dir)
 
-      uvec = np.cos(dir)*spd
-      vvec = np.sin(dir)*spd
-      if(spd > 0): _data[i] = SRV(_data[i],azi_data[i],r_data[i],_min_data[i],_max_data[i],uvec,vvec)
-      #azi_data[i] = None
+        uvec = np.cos(dir)*spd
+        vvec = np.sin(dir)*spd
+        _data[i] = SRV(_data[i],azi_data[i],r_data[i],_min_data[i],_max_data[i],uvec,vvec)
 
     if(i == 2): #scale CC(RhoHV) from 0-1 to 0-100(for colorbar)
       _data[i] = np.multiply(_data[i],100)
@@ -222,7 +216,7 @@ def vector_normalize(vec):
 
 def get_cmap(index):
   cmap_type = ''
-  if(index == 0): cmap_type = 'vel'
+  if(index == 0): cmap_type = 'dbz'
   if(index == 1): cmap_type = 'vel'
   if(index == 2): cmap_type = 'cc'
   scale = np.divide(pd.read_csv(sys.path[0]+f'/data/{cmap_type}.csv',delimiter=','),255)
