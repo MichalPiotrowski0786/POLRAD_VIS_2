@@ -149,7 +149,7 @@ def compute():
 
       uvec = np.cos(dir)*spd
       vvec = np.sin(dir)*spd
-      if(uvec != 0.0 or vvec != 0.0): _data[i] = SRV(_data[i],azi_data[i],r_data[i],_min_data[i],_max_data[i],uvec,vvec)
+      if(spd > 0): _data[i] = SRV(_data[i],azi_data[i],r_data[i],_min_data[i],_max_data[i],uvec,vvec)
       #azi_data[i] = None
 
     if(i == 2): #scale CC(RhoHV) from 0-1 to 0-100(for colorbar)
