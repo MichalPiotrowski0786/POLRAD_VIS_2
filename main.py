@@ -1,6 +1,5 @@
 from ftplib import FTP
 import sys
-from osgeo.gdalconst import DIM_TYPE_HORIZONTAL_X
 import wradlib as wrlb
 import numpy as np
 import matplotlib.pyplot as pl
@@ -14,6 +13,10 @@ def scan_from_scan_index(index,arr):
   return arr[index]
 
 def preload():
+  global site
+  site = FTP('daneradarowe.pl')
+  site.login()
+
   global radars
   radars = []
   for name in site.nlst():
@@ -235,9 +238,9 @@ def get_dump_files(name,data,r_data,azi_data,dataOnly):
     np.savetxt(f'{sys.path[0]}/data/dump/{name}_r.vol',r_data,delimiter=';',fmt='%f')
     np.savetxt(f'{sys.path[0]}/data/dump/{name}_azi.vol',azi_data,delimiter=';',fmt='%f')
 
-site = FTP('daneradarowe.pl')
-site.login()
+def init():
+  preload() #load string data from website storage: radars, number of scans, their names etc.
+  load() #download data to local machine: both dBZ and Velocity(and maybe CC)
 
-preload() #load string data from website storage: radars, number of scans, their names etc.
-load() #download data to local machine: both dBZ and Velocity(and maybe CC)
-compute() #decode & process data to get simple info(number of slices/elevations, radar location etc.)
+def run():
+  compute() #decode & process data to get simple info(number of slices/elevations, radar location etc.)
