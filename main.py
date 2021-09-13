@@ -176,7 +176,7 @@ def SRV(velocity,azi,r,dmin,uc=0.0,vc=0.0):
       y = np.sin(theta)*r[j]
 
       t = [x,y]
-      v = [uc,vc]
+      v = [uc,-vc]
 
       atan = np.arctan2(t[1],t[0])
       t = [np.cos(atan),np.sin(atan)]
