@@ -102,7 +102,6 @@ def compute():
   for index, slice in enumerate(data[0]['volume']['scan']['slice']):
     print(f'[{index}] '+slice['posangle']+'°')
   elevation_data = (int(input('Number of elevation: ')))
-  elevation_data = 0
 
   for i,type in enumerate(data):
     slice = type['volume']['scan']['slice'][elevation_data]
