@@ -18,13 +18,14 @@ def preload():
   for name in site.nlst():
     if '125' in name: radars.append(name)
 
-  print('Select radar:')
+  # print('Select radar:')
 
-  for index,radar in enumerate(radars):
-    print(f'[{index}] {radar}')
+  # for index,radar in enumerate(radars):
+  #   print(f'[{index}] {radar}')
   
   global radar_index
-  radar_index = int(input('Number of radar: '))
+  #radar_index = int(input('Number of radar: '))
+  radar_index = 0
 
   scans = []
   for raw_scan in site.nlst(radars[radar_index]):
@@ -51,11 +52,12 @@ def preload():
 
   data_scans = list(dict.fromkeys(data_scans))
   data_scans_raw = list(dict.fromkeys(data_scans_raw))
-  for index,data_scan in enumerate(data_scans):
-    print(f'[{index}] {data_scan}')
+  # for index,data_scan in enumerate(data_scans):
+  #   print(f'[{index}] {data_scan}')
 
   global scan_index
-  scan_index = int(input('Number of scan: '))
+  #scan_index = int(input('Number of scan: '))
+  scan_index = -1
 
   global selected_scans
   selected_scans = []
@@ -90,9 +92,10 @@ def compute():
   _min_data = []
   _max_data = []
 
-  for i in range(selected_scans_len):
-    data.append(wrlb.io.read_rainbow(f'{sys.path[0]}/data/{names_for_loop[i]}_temp.vol'))
-
+  # for i in range(selected_scans_len):
+  #   data.append(wrlb.io.read_rainbow(f'{sys.path[0]}/data/{names_for_loop[i]}_temp.vol'))
+  data.append(wrlb.io.read_rainbow(f'{sys.path[0]}/data/vel_temp.vol'))
+  data.append(wrlb.io.read_rainbow(f'{sys.path[0]}/data/vel_temp.vol'))
   ax = []
   fig, ax = pl.subplots(1,selected_scans_len,sharex=True,sharey=True,figsize=(14,8))
 
@@ -100,9 +103,10 @@ def compute():
   datatype_colorbar = ['dBZ','m/s','%']
   dumpfile_names = ['dbz_dump','vel_dump','cc_dump']
 
-  for index, slice in enumerate(data[0]['volume']['scan']['slice']):
-    print(f'[{index}] '+slice['posangle']+'°')
-  elevation_data = (int(input('Number of elevation: ')))
+  # for index, slice in enumerate(data[0]['volume']['scan']['slice']):
+  #   print(f'[{index}] '+slice['posangle']+'°')
+  #elevation_data = (int(input('Number of elevation: ')))
+  elevation_data = 0
 
   for i,type in enumerate(data):
     slice = type['volume']['scan']['slice'][elevation_data]
@@ -136,30 +140,13 @@ def compute():
 
     _data[i] = _min_data[i] + _data[i] * (_max_data[i] - _min_data[i]) / 2 ** _depth_data[i]
 
+    if(i == 1):
+      _data[i] = SRV(_data[i],azi_data[i],r_data[i],_min_data[i],40.0,0.0)
+
     if(i == 2): #scale CC(RhoHV) from 0-1 to 0-100(for colorbar)
       _data[i] = np.multiply(_data[i],100)
       _max_data[i] = np.multiply(_max_data[i],100)
     #get_dump_files(dumpfile_names[i],_data[i],r_data[i],azi_data[i],False)
-
-    # if(i == 1): 
-    #   _srv = read_test_srv()
-    #   print(len(r_data[i]))
-    #   min_srv_value = min(_srv[0])
-    #   if(min_srv_value > 0): min_srv_value *= -1 
-    #   min_vel_value = _min_data[i]-min_srv_value
-
-    #   _data[i] = np.subtract(_data[i],_srv)
-    #   _data[i][_data[i] <= min_vel_value] = _min_data[i]
-
-    # if(i == 1): 
-    #   _data[i] = read_test_srv()
-    #   azi_data[i] = None
-
-    # if(i == 1): 
-    #   azi_data[i] = None
-
-    # if(i == 1): 
-    #   _data[i] = SRV(_data[i],azi_data[i],len(azi_data[i]),_min_data[i])
 
     cgax,pm = wrlb.vis.plot_ppi(_data[i],r=r_data[i], az=azi_data[i], fig=fig,ax=ax[i], vmin=_min_data[i], vmax=_max_data[i],cmap=get_cmap(i))
 
@@ -182,10 +169,46 @@ def compute():
   pl.tight_layout()
   pl.show()
 
+def SRV(velocity,azi,r,dmin,uc=0.0,vc=0.0):
+  v_copy = velocity.copy()
+  for i in range(len(azi)):
+    for j in range(len(r)):
+      theta = (0.5*np.pi)-np.deg2rad(azi[i])
+      x = np.cos(theta)*r[j]
+      y = np.sin(theta)*r[j]
+
+      t = [x,y]
+      v = [uc,vc]
+
+      atan = np.arctan2(t[1],t[0])
+      t = [np.cos(atan),np.sin(atan)]
+
+      v0 = v.copy()
+      v0 = vector_normalize(v0)
+
+      dot = np.dot(t,v0)
+      v = np.multiply(v,abs(dot))
+      vmag = vector_magnitude(v)
+      if(dot < 0): vmag*=-1
+      if(v_copy[i][j] != dmin): v_copy[i][j] -= vmag
+
+  return v_copy
+def vector_magnitude(vec):
+  mag = np.sqrt(vec[0]*vec[0]+vec[1]*vec[1])
+  if mag == 0: mag = 1
+  return mag
+
+def vector_normalize(vec):
+  mag = vector_magnitude(vec)
+  vec[0] /= mag
+  vec[1] /= mag
+
+  return vec
 
 def get_cmap(index):
   cmap_type = ''
-  if(index == 0): cmap_type = 'dbz'
+  #if(index == 0): cmap_type = 'dbz'
+  if(index == 0): cmap_type = 'vel'
   if(index == 1): cmap_type = 'vel'
   if(index == 2): cmap_type = 'cc'
   scale = np.divide(pd.read_csv(sys.path[0]+f'/data/{cmap_type}.csv',delimiter=','),255)
@@ -200,31 +223,6 @@ def get_dump_files(name,data,r_data,azi_data,dataOnly):
   if not dataOnly:
     np.savetxt(f'{sys.path[0]}/data/dump/{name}_r.vol',r_data,delimiter=';',fmt='%f')
     np.savetxt(f'{sys.path[0]}/data/dump/{name}_azi.vol',azi_data,delimiter=';',fmt='%f')
-
-def SRV(velocity,azi,rays,min_data):
-  arr = np.array(velocity)
-  arr = np.multiply(arr,0)
-  arr = np.add(arr,1)
-
-  thetas = np.deg2rad(azi)
-  speed = 5.0;
-  for i in range(rays):
-    if(thetas[i] < np.pi): thetas[i] = speed;
-    else: thetas[i] = -speed;
-    print(thetas[i])
-
-  for i in range(rays):
-    arr[i] = np.multiply(arr[i],thetas[i]);
-  
-  arr = np.subtract(velocity,arr)
-  diff = min_data+speed
-  arr[arr == diff] = min_data
-
-  return arr
-
-def read_test_srv(): 
-  file = np.loadtxt(f'{sys.path[0]}/data/SRV_test.txt')
-  return file
 
 site = FTP('daneradarowe.pl')
 site.login()
