@@ -1,0 +1,449 @@
+<volume version="5.44.5" datetime="2021-09-21T15:24:54" type="vol" owner="">
+   <scan name="RAM_125_ZVW.vol" time="15:24:32" date="2021-09-21">
+      <unitid>SI</unitid>
+      <advancedchanged>0</advancedchanged>
+      <detailedchanged>1</detailedchanged>
+      <scantime>285</scantime>
+      <pargroup refid="sdfbase">
+         <multitrip>Off</multitrip>
+         <numtrip>1</numtrip>
+         <multitripprfmode>Off</multitripprfmode>
+         <stoprange>250</stoprange>
+         <numele>8</numele>
+         <scanstrategy>Optimised</scanstrategy>
+         <firstele>0.5</firstele>
+         <lastele>30</lastele>
+         <datatypez>On</datatypez>
+         <datatypeuz>On</datatypeuz>
+         <datatypev>Off</datatypev>
+         <datatypew>Off</datatypew>
+         <datatypezdr>On</datatypezdr>
+         <datatypephidp>On</datatypephidp>
+         <datatypekdp>On</datatypekdp>
+         <datatypeukdp>Off</datatypeukdp>
+         <datatyperhohv>On</datatyperhohv>
+         <datatypeldr>Off</datatypeldr>
+         <gdrx_dp_proc_mode>GdrxDpModeHV_HV</gdrx_dp_proc_mode>
+         <rangestep>1</rangestep>
+         <rangesamp>4</rangesamp>
+         <start_range>0</start_range>
+         <highprf>550</highprf>
+         <stagger>None</stagger>
+         <lowprf>0</lowprf>
+         <pw_index>2</pw_index>
+         <cf_doppler>Off</cf_doppler>
+         <filtermode>FFT</filtermode>
+         <fftfilter>On</fftfilter>
+         <cf_spatial>On</cf_spatial>
+         <speckle>On</speckle>
+         <gdrx_clutter_flag_filter>Off</gdrx_clutter_flag_filter>
+         <cf_dectree>Off</cf_dectree>
+         <filterwidth>8</filterwidth>
+         <gdrx_cluttermap>GdrxCmOff</gdrx_cluttermap>
+         <antspeed>18</antspeed>
+         <anglestep>1</anglestep>
+         <timesamp>31</timesamp>
+         <fixselect>AngleStep</fixselect>
+         <csr>25</csr>
+         <sqi>0.3</sqi>
+         <zsqi>0.5</zsqi>
+         <log>2</log>
+         <extrarclfile>None</extrarclfile>
+         <dualprfmode>SdfDPrfModeAda</dualprfmode>
+         <prfcorrthr>2</prfcorrthr>
+         <prfcorron>On</prfcorron>
+         <prfcorrmode>SdfDPrfCorrMedian</prfcorrmode>
+         <filterdepth>SdfCfDepthDefault</filterdepth>
+         <fft_weight>GdrxWfHamming</fft_weight>
+         <spatial_modus>SdfSpatialFilterAvg</spatial_modus>
+         <spatial_min>3</spatial_min>
+         <spatial_max>5</spatial_max>
+         <mask_uz>1</mask_uz>
+         <mask_cz>14</mask_cz>
+         <mask_v>4</mask_v>
+         <mask_w>4</mask_w>
+         <gdrx_tripnotchwidth>0.5</gdrx_tripnotchwidth>
+         <gdrx_tripccorthres>20</gdrx_tripccorthres>
+         <gdrx_tripsnrthres>3</gdrx_tripsnrthres>
+         <gdrx_tripsqithres>0.4</gdrx_tripsqithres>
+         <gdrx_tripratiothres>20</gdrx_tripratiothres>
+         <gdrx_tripdftwin>GdrxWfRectangular</gdrx_tripdftwin>
+         <phase_coding>2</phase_coding>
+         <datatypes>dBZ,dBuZ,V,W,ZDR,uPhiDP,PhiDP,KDP,RhoHV</datatypes>
+         <masterdatatypes>dBZ,V,W,ZDR,PhiDP,KDP,RhoHV</masterdatatypes>
+         <datatypes_format>dBZ=-1,dBuZ=-1,V=-1,W=-1,ZDR=-1,uPhiDP=-1,PhiDP=-1,KDP=-1,RhoHV=-1</datatypes_format>
+      </pargroup>
+      <slice refid="0">
+         <dynz min="-31.5" max="95.5"/>
+         <dynv min="-47.871" max="47.871"/>
+         <dynw min="0.062332" max="15.8947"/>
+         <dynzdr min="-8" max="12"/>
+         <dynldr min="-50" max="10"/>
+         <dynkdp min="-10" max="10"/>
+         <dynsnr min="0" max="127"/>
+         <posangle>0.5</posangle>
+         <antspeed>18</antspeed>
+         <timesamp>27</timesamp>
+         <threshold>dBZ:10,dBuZ:1,V:6,W:6,ZDR:10,LDR:10,uPhiDP:2,PhiDP:2,KDP:2,uKDP:2,RhoHV:2</threshold>
+         <numtrip>1</numtrip>
+         <stoprange>125</stoprange>
+         <start_range>0</start_range>
+         <rangestep>1</rangestep>
+         <rangesamp>4</rangesamp>
+         <pw_index>1</pw_index>
+         <cf_doppler>On</cf_doppler>
+         <fft_weight>GdrxWfHamming</fft_weight>
+         <spatial_modus>SdfSpatialFilterAvg</spatial_modus>
+         <spatial_min>3</spatial_min>
+         <spatial_max>5</spatial_max>
+         <startangle>0.0</startangle>
+         <stopangle>0.0</stopangle>
+         <highprf>1200</highprf>
+         <stagger>4/3</stagger>
+         <prfcorrmode>SdfDPrfCorrMedian</prfcorrmode>
+         <prfcorron>On</prfcorron>
+         <prfcorrthr>2</prfcorrthr>
+         <dualprfmode>SdfDPrfModeAda</dualprfmode>
+         <lowprf>900</lowprf>
+         <fftfilter>Off</fftfilter>
+         <filterwidth>4</filterwidth>
+         <filterdepth>SdfCfDepthDefault</filterdepth>
+         <statisticalfilter>Off</statisticalfilter>
+         <cf_spatial>On</cf_spatial>
+         <superresolution>Off</superresolution>
+         <antdirection>0</antdirection>
+         <fixselect>AngleStep</fixselect>
+         <anglestep>1</anglestep>
+         <asyncoffset>0</asyncoffset>
+         <anglesync>On</anglesync>
+         <csr>25</csr>
+         <sqi>0.3</sqi>
+         <zsqi>0.5</zsqi>
+         <log>2</log>
+         <speckle>On</speckle>
+         <extrarclfile>None</extrarclfile>
+         <phase_coding>2</phase_coding>
+         <phase_pattern>0</phase_pattern>
+         <gdrx_cluttermap>GdrxCmOff</gdrx_cluttermap>
+         <gdrx_tripnotchwidth>0.5</gdrx_tripnotchwidth>
+         <gdrx_tripccorthres>20</gdrx_tripccorthres>
+         <gdrx_tripsnrthres>3</gdrx_tripsnrthres>
+         <gdrx_tripsqithres>0.4</gdrx_tripsqithres>
+         <gdrx_tripratiothres>20</gdrx_tripratiothres>
+         <gdrx_tripdftwin>GdrxWfRectangular</gdrx_tripdftwin>
+         <gdrx_clutter_flag_filter>Off</gdrx_clutter_flag_filter>
+         <cf_gip>Off</cf_gip>
+         <cf_gip_width>0.0000</cf_gip_width>
+         <cf_gip_mode_const>Off</cf_gip_mode_const>
+         <cf_gip_max_width>0.5000</cf_gip_max_width>
+         <cmd>Off</cmd>
+         <int_filter_mode>0</int_filter_mode>
+         <int_filter_hconf>0</int_filter_hconf>
+         <int_filter_vconf>0</int_filter_vconf>
+         <int_filter_phaseint>Off</int_filter_phaseint>
+         <cf_dectree>Off</cf_dectree>
+         <kdpautoscale>On</kdpautoscale>
+         <triprecovery>Off</triprecovery>
+         <midprf>0</midprf>
+         <noise_power_dbz>-43.5074</noise_power_dbz>
+         <noise_power_dbz_dpv>-43.7278</noise_power_dbz_dpv>
+         <rspradconst>69.11 66.97 62.61 </rspradconst>
+         <rspdphradconst>71.98 69.85 65.48 </rspdphradconst>
+         <rspdpvradconst>72.52 70.39 66.02 </rspdpvradconst>
+         <gdrxmaxpowkw>233.8837</gdrxmaxpowkw>
+         <rsptxcorr>4</rsptxcorr>
+         <gdrxafcmode>0</gdrxafcmode>
+         <gdrxafcfreq>60.0000</gdrxafcfreq>
+         <gdrxanctxfreq>60.0921</gdrxanctxfreq>
+         <slicedata time="15:24:32" date="2021-09-21">
+            <rayinfo refid="startangle" blobid="0" rays="361" depth="16"/>
+            <rawdata blobid="1" rays="361" type="V" bins="125" min="-47.9" max="47.9" depth="8"/>
+         </slicedata>
+      </slice>
+      <slice refid="1">
+         <dynz min="-31.5" max="95.5"/>
+         <dynv min="-47.871" max="47.871"/>
+         <dynw min="0.062332" max="15.8947"/>
+         <dynzdr min="-8" max="12"/>
+         <dynldr min="-50" max="10"/>
+         <dynkdp min="-10" max="10"/>
+         <dynsnr min="0" max="127"/>
+         <posangle>2.0</posangle>
+         <noise_power_dbz>-43.5074</noise_power_dbz>
+         <noise_power_dbz_dpv>-43.7278</noise_power_dbz_dpv>
+         <rangestep>1</rangestep>
+         <timesamp>56</timesamp>
+         <rspradconst>69.11 66.97 62.61 </rspradconst>
+         <rspdphradconst>71.98 69.85 65.48 </rspdphradconst>
+         <rspdpvradconst>72.52 70.39 66.02 </rspdpvradconst>
+         <gdrxmaxpowkw>233.8837</gdrxmaxpowkw>
+         <rsptxcorr>4</rsptxcorr>
+         <gdrxafcmode>0</gdrxafcmode>
+         <gdrxafcfreq>60.0000</gdrxafcfreq>
+         <gdrxanctxfreq>60.0921</gdrxanctxfreq>
+         <slicedata time="15:24:10" date="2021-09-21">
+            <rayinfo refid="startangle" blobid="2" rays="361" depth="16"/>
+            <rawdata blobid="3" rays="361" type="V" bins="125" min="-47.9" max="47.9" depth="8"/>
+         </slicedata>
+      </slice>
+      <slice refid="2">
+         <dynz min="-31.5" max="95.5"/>
+         <dynv min="-47.871" max="47.871"/>
+         <dynw min="0.062332" max="15.8947"/>
+         <dynzdr min="-8" max="12"/>
+         <dynldr min="-50" max="10"/>
+         <dynkdp min="-10" max="10"/>
+         <dynsnr min="0" max="127"/>
+         <posangle>3.5</posangle>
+         <noise_power_dbz>-43.5074</noise_power_dbz>
+         <noise_power_dbz_dpv>-43.7278</noise_power_dbz_dpv>
+         <rangestep>1</rangestep>
+         <timesamp>56</timesamp>
+         <rspradconst>69.11 66.97 62.61 </rspradconst>
+         <rspdphradconst>71.98 69.85 65.48 </rspdphradconst>
+         <rspdpvradconst>72.52 70.39 66.02 </rspdpvradconst>
+         <gdrxmaxpowkw>233.8837</gdrxmaxpowkw>
+         <rsptxcorr>4</rsptxcorr>
+         <gdrxafcmode>0</gdrxafcmode>
+         <gdrxafcfreq>60.0000</gdrxafcfreq>
+         <gdrxanctxfreq>60.0921</gdrxanctxfreq>
+         <slicedata time="15:23:48" date="2021-09-21">
+            <rayinfo refid="startangle" blobid="4" rays="361" depth="16"/>
+            <rawdata blobid="5" rays="361" type="V" bins="125" min="-47.9" max="47.9" depth="8"/>
+         </slicedata>
+      </slice>
+      <slice refid="3">
+         <dynz min="-31.5" max="95.5"/>
+         <dynv min="-35.1852" max="35.1852"/>
+         <dynw min="0.045814" max="11.6826"/>
+         <dynzdr min="-8" max="12"/>
+         <dynldr min="-50" max="10"/>
+         <dynkdp min="-10" max="10"/>
+         <dynsnr min="0" max="127"/>
+         <posangle>5.4</posangle>
+         <stoprange>170</stoprange>
+         <highprf>882</highprf>
+         <lowprf>661</lowprf>
+         <antspeed>16</antspeed>
+         <timesamp>47</timesamp>
+         <noise_power_dbz>-43.5074</noise_power_dbz>
+         <noise_power_dbz_dpv>-43.7278</noise_power_dbz_dpv>
+         <rangestep>1</rangestep>
+         <rspradconst>69.11 66.97 62.61 </rspradconst>
+         <rspdphradconst>71.98 69.85 65.48 </rspdphradconst>
+         <rspdpvradconst>72.52 70.39 66.02 </rspdpvradconst>
+         <gdrxmaxpowkw>233.8837</gdrxmaxpowkw>
+         <rsptxcorr>4</rsptxcorr>
+         <gdrxafcmode>0</gdrxafcmode>
+         <gdrxafcfreq>60.0000</gdrxafcfreq>
+         <gdrxanctxfreq>60.0921</gdrxanctxfreq>
+         <slicedata time="15:23:24" date="2021-09-21">
+            <rayinfo refid="startangle" blobid="6" rays="361" depth="16"/>
+            <rawdata blobid="7" rays="361" type="V" bins="170" min="-35.1" max="35.1" depth="8"/>
+         </slicedata>
+      </slice>
+      <slice refid="4">
+         <dynz min="-31.5" max="95.5"/>
+         <dynv min="-47.871" max="47.871"/>
+         <dynw min="0.062332" max="15.8947"/>
+         <dynzdr min="-8" max="12"/>
+         <dynldr min="-50" max="10"/>
+         <dynkdp min="-10" max="10"/>
+         <dynsnr min="0" max="127"/>
+         <posangle>8.1</posangle>
+         <antspeed>20</antspeed>
+         <timesamp>51</timesamp>
+         <noise_power_dbz>-43.5074</noise_power_dbz>
+         <noise_power_dbz_dpv>-43.7278</noise_power_dbz_dpv>
+         <rangestep>1</rangestep>
+         <rspradconst>69.11 66.97 62.61 </rspradconst>
+         <rspdphradconst>71.98 69.85 65.48 </rspdphradconst>
+         <rspdpvradconst>72.52 70.39 66.02 </rspdpvradconst>
+         <gdrxmaxpowkw>233.8837</gdrxmaxpowkw>
+         <rsptxcorr>4</rsptxcorr>
+         <gdrxafcmode>0</gdrxafcmode>
+         <gdrxafcfreq>60.0000</gdrxafcfreq>
+         <gdrxanctxfreq>60.0921</gdrxanctxfreq>
+         <slicedata time="15:23:04" date="2021-09-21">
+            <rayinfo refid="startangle" blobid="8" rays="361" depth="16"/>
+            <rawdata blobid="9" rays="361" type="V" bins="125" min="-47.9" max="47.9" depth="8"/>
+         </slicedata>
+      </slice>
+      <slice refid="5">
+         <dynz min="-31.5" max="95.5"/>
+         <dynv min="-47.871" max="47.871"/>
+         <dynw min="0.062332" max="15.8947"/>
+         <dynzdr min="-8" max="12"/>
+         <dynldr min="-50" max="10"/>
+         <dynkdp min="-10" max="10"/>
+         <dynsnr min="0" max="127"/>
+         <posangle>11.8</posangle>
+         <antspeed>20</antspeed>
+         <timesamp>51</timesamp>
+         <noise_power_dbz>-43.5074</noise_power_dbz>
+         <noise_power_dbz_dpv>-43.7278</noise_power_dbz_dpv>
+         <rangestep>1</rangestep>
+         <rspradconst>69.11 66.97 62.61 </rspradconst>
+         <rspdphradconst>71.98 69.85 65.48 </rspdphradconst>
+         <rspdpvradconst>72.52 70.39 66.02 </rspdpvradconst>
+         <gdrxmaxpowkw>233.8837</gdrxmaxpowkw>
+         <rsptxcorr>4</rsptxcorr>
+         <gdrxafcmode>0</gdrxafcmode>
+         <gdrxafcfreq>60.0000</gdrxafcfreq>
+         <gdrxanctxfreq>60.0921</gdrxanctxfreq>
+         <slicedata time="15:22:44" date="2021-09-21">
+            <rayinfo refid="startangle" blobid="10" rays="361" depth="16"/>
+            <rawdata blobid="11" rays="361" type="V" bins="125" min="-47.9" max="47.9" depth="8"/>
+         </slicedata>
+      </slice>
+      <slice refid="6">
+         <dynz min="-31.5" max="95.5"/>
+         <dynv min="-47.871" max="47.871"/>
+         <dynw min="0.062332" max="15.8947"/>
+         <dynzdr min="-8" max="12"/>
+         <dynldr min="-50" max="10"/>
+         <dynkdp min="-10" max="10"/>
+         <dynsnr min="0" max="127"/>
+         <posangle>16.9</posangle>
+         <timesamp>46</timesamp>
+         <antspeed>22</antspeed>
+         <noise_power_dbz>-43.5074</noise_power_dbz>
+         <noise_power_dbz_dpv>-43.7278</noise_power_dbz_dpv>
+         <rangestep>1</rangestep>
+         <rspradconst>69.11 66.97 62.61 </rspradconst>
+         <rspdphradconst>71.98 69.85 65.48 </rspdphradconst>
+         <rspdpvradconst>72.52 70.39 66.02 </rspdpvradconst>
+         <gdrxmaxpowkw>233.8837</gdrxmaxpowkw>
+         <rsptxcorr>4</rsptxcorr>
+         <gdrxafcmode>0</gdrxafcmode>
+         <gdrxafcfreq>60.0000</gdrxafcfreq>
+         <gdrxanctxfreq>60.0921</gdrxanctxfreq>
+         <slicedata time="15:22:25" date="2021-09-21">
+            <rayinfo refid="startangle" blobid="12" rays="361" depth="16"/>
+            <rawdata blobid="13" rays="361" type="V" bins="125" min="-47.9" max="47.9" depth="8"/>
+         </slicedata>
+      </slice>
+      <slice refid="7">
+         <dynz min="-31.5" max="95.5"/>
+         <dynv min="-47.871" max="47.871"/>
+         <dynw min="0.062332" max="15.8947"/>
+         <dynzdr min="-8" max="12"/>
+         <dynldr min="-50" max="10"/>
+         <dynkdp min="-10" max="10"/>
+         <dynsnr min="0" max="127"/>
+         <threshold>dBZ:10,dBuZ:1,V:6,W:6,ZDR:10,LDR:10,uPhiDP:2,PhiDP:2,KDP:2,RhoHV:2</threshold>
+         <posangle>23.8</posangle>
+         <antspeed>22</antspeed>
+         <timesamp>46</timesamp>
+         <noise_power_dbz>-43.5074</noise_power_dbz>
+         <noise_power_dbz_dpv>-43.7278</noise_power_dbz_dpv>
+         <rangestep>1</rangestep>
+         <rspradconst>69.11 66.97 62.61 </rspradconst>
+         <rspdphradconst>71.98 69.85 65.48 </rspdphradconst>
+         <rspdpvradconst>72.52 70.39 66.02 </rspdpvradconst>
+         <gdrxmaxpowkw>233.8837</gdrxmaxpowkw>
+         <rsptxcorr>4</rsptxcorr>
+         <gdrxafcmode>0</gdrxafcmode>
+         <gdrxafcfreq>60.0000</gdrxafcfreq>
+         <gdrxanctxfreq>60.0921</gdrxanctxfreq>
+         <slicedata time="15:22:06" date="2021-09-21">
+            <rayinfo refid="startangle" blobid="14" rays="361" depth="16"/>
+            <rawdata blobid="15" rays="361" type="V" bins="125" min="-47.9" max="47.9" depth="8"/>
+         </slicedata>
+      </slice>
+   </scan>
+   <sensorinfo type="gdrx" id="RAM" name="Ramza">
+      <lon>18.726670</lon>
+      <lat>50.151670</lat>
+      <alt>358.000000</alt>
+      <wavelen>0.05319</wavelen>
+      <beamwidth>0.98</beamwidth>
+   </sensorinfo>
+</volume>
+<!-- END XML -->
+<BLOB blobid="0" size="737" compression="qt">
+  ÒxœÒ-ýp]qqÉr~s4sìt¡uWvvÂwxx/xåyzP{{¿|s})}Þ~•K€ €¸n‚#‚Ùƒ„F„ý…³†l‡‡ÓˆŠ‰C‰öŠ¬‹bŒŒÍ†Ž:Žï§^‘‘Ë’ƒ“4“ì”¡•W––Ä—|˜.˜å™šP››½œr)ßž•ŸJ   ¸¡o¢#¢Û£‘¤F¤ý¥µ¦j§§Ó¨Š©@©öª««c¬¬Ï­†®>®ï¯§°\±±Ë²~³9³ê´¢µX¶¶Â·z¸.¸å¹œºR»»¼¼s½)½Þ¾—¿JÀÀ·ÁnÂ#ÂÛÃÄKÄýÅ´ÆhÇÇÔÈ‰É@É÷Ê®ËbÌÌÍÍ„Î;ÎñÏ¥Ð]ÑÑÈÒ€Ó5ÓëÔ ÕXÖÖÃ×zØ.ØåÙžÚPÛÛ¼ÜrÝ+ÝßÞ•ßJàà¸ápâ#âÝãäFäÿå²æhççÕèéAéöê¬ëaììÍíƒî:îðï¦ð]ññËò‚ó6óëô õXööÂ÷xø0øäù›úQûû¿ürý(ýãþ•ÿL  ·n'Û“Eý±gÔŠ	B	õ
+®cÎ†9ð¦_Ê€7ì WÃy.å›S¼r)à”K  »!m"%"Ú#‘$F$ý%³&g''Ó(Š)@)ù*­+b,,Í-„.=.ó/¥0]11È2363ï4 5W66Ã7{8/8å9›:P;;¼<t=*=ß>–?K@@·AnB'BÚC‘DEDýEµFiG GÔH‹ICIöJ¬KaLLÐM†N9NïO¦P\QQÈR€S4SëT¡UXVVÃWzX/XäY›ZQ[[½\t],]Þ^•_J``ºanb#bÛcdGdûe²fgggÕhŠiAiõj«kbllÎm…n=nño§p_ïÐf>
+</BLOB>
+<BLOB blobid="1" size="2587" compression="qt">
+  °ExœíërÛ¸ÇùB}~ÜWˆ%Q”HJ±œÖW‰dœÔ¶î$(É—Ùm÷ëN§ínç)özÎI+–hQ¬7øÏD72üá ç€É0¶‘gAÓØV}mòT7à«¸ìñ6Ð|6cQ–Ì^ûkÎš¡Øt<)^LsÐ,†¢ ¾ÿ<}Æ&Ã0ø3Çþ· vX¦Ý~·[üä86Æ;ò>úíWþê·ûÿòËOÉÇ÷Ÿïñqåìœ‹|ÆSñž>}Ê=oõ?f„ûûûäõÃ—‡‡Ïô	oHvò—œ«~!øÆÃCArŽî~äÏ?üóûü“Ã±0g76ä…SlEòŸqñt…ðb–ß
+i$â¢«¥M&\ÄEµ¶ï{<îäd› (ê~¥Ã=ñŠà¾÷²]ù´^*tYn1ô"l
+²žLäwßep,ër]=£Œ.}Z>.þ</EËZ©O¦i¼.Ëü«`ÔŸN	ÞKÓº´¿ú8Ž'´ô}ø<ð÷üÄ˜Lp“ii–Á=?žLA9EvüÏÁ¤,Ys‡ÙZãý}òJ¼o^F€€RúcE—o‡ÃA¿uu•¾ÏˆRæÒêççàô¢½M®ƒRÒí`¸äoOáÂéu€ç­Ä„Ãù¸¯=p!žo¬ïøéäRá”r2úp®n/°ëó€\áý«ËK5pý±/ä²ÃK~ßøªð”(Ì/¹xù<pÂçÑýœÏK…gä*/·I‚ñäbê÷ÂÕö»ZºÚŽW
+WU²
+«×ëö¤n[,‘{Ý³³³î™q&Kw¯Û=£VÈf÷<?½nÍ—ÂY-­?“|H`êè=Ei[ë§n×Pçˆ]¨£''ªè½mþGŽÂŽŽÔáUÁO®ˆ×´Í—ý'¢g¨S¢K&søéé±"¸qwz
+£~¤ÎçO!ØxÝ‘2¸–Vªˆap|’HRg©H~g§XíÿR G*„ê&ZZZ¯Qžî+ƒûçç”Áµ¾-9Žm+ƒ»N³Ù„ç¦¶ã ¼i4¹`´Ø!z£Q¯×e¢mÛqÞ°,ÉpÄ:ŽëÂ »Ž¦iâ+QÌ}‡é`9²‰jÖj5|!Þ!ºÛjµ\4Üi‚½ ExµZ­‰dw:²½²Ûrlàœ]©Tª¦PÃþ6‘C²iÌ¡Óøš)ÀýëëÎ>©Ó!ÛÝ^«yÓ-K€×µÛˆßÇÔmt;qòjeoïÍ¨R­â'-Žø6=u€Þ0¹Àî=Bƒé`{]€ím>Ø	½Óyëb|ƒ³Ó€zØµZÝî±Ã‡£WNÃªS¬UÉÝ¨çá¹V+ÍùlìvîFÃ2y*{oÞ¼¡qoó1ßG§oAb·šX[@ôT«pº ¸Ñjq8º;æ9ÇÆ<kcqmÚÍF|N œúýà åB;0ÍÂ£M†Þï3%Èë.ïù6”U“<Æ_Ñï|«&*ËA-'"¤u˜ÀÙÈwaÞºTÞoYìEÑ'­h4‘áæÛ8§ ‚šVw1pÆf‹·nRU¦h¾CÌ6ß&¦7KÜ¨ƒZHê³›§l‘‡L¬pâüÕ°£)¾¨ÿ-Ìï<¾!ÛˆDCçƒ[#0Î[n³ºWÍ‹ž8êmSTJ*t0>qÅw6XŽN'	NZriÊpY]iB¦7KÂÑ§PÏ©!0ù1Áý¦Ó¢Í4ë7˜Üb¢CÂòN&ž[0ÍÔM\»ðˆ0°Ó±âþT´x"K©ÐsoMÜHf´}Ð¤ÔËçörbÑN+M3iÁ«ïœò?~Ì=”­– Ðñe,8<faªó¼ðñÆ9I`”)²©8ÇiQùáÅ¬7q¢K5¯‘x‚Ù‰ÍD§EžÁ×ÐVÝ¢P¶—‚ãËÅùN“R±‰ÏJv ‡Äåên²¼ÙÄJO8²Ü¬e¥W”hzÃgy|ãá´¢ªâÒB(;i ­'qÖtÝz4â¹\Lß/1-ÛiÖ…æ˜5)¤žf5Ëj5wâ'‚ˆ|T-¥[;M_Iì$Œ-DCŽ¡OO¡—Õ ´É£Œo…Ëª¢ï¤á2Š>‘g8ÕQ§Åç±R'²SZCèR-O°†j–0cØA²ÖLZZZZZZZÛKá·W¨”Òo¡‚÷*é
+ÙêÔSú•å…à{w ºy:x÷î £
+ÞÙßo«bíVKÛH¶^«|ÕÐÒÒÒÒÒÒÒÒÒÒz5RûS ú7Ì´´´´´´¾aù^OþW­fpßó”ÍDºÝ®Âû"]¥_R§®×µ´¶“§ò;Mu hiiý¹¥v/êÛü›œ\Éª8k»]R½SZVÿ¢­¥¥¥¥¥¥¥¥¥¥%OÉ•+Ñd2o>K;1<Œ¢8‰Š¢5ìIr(Ãh:×Œ­²“k§ÀGã±üŠåFÈt÷Ì˜Ïâl<ÐGb÷ºWà³Ù|6›-ó9à‘Ž¶—d8\'³wÁê/ZÎæóGƒâ8væ‚Oik6Œi˜œ óG£Xˆ†<çG-Ÿ½å¶£?ý÷÷p4Ù Àw1ú]Hht‡ŒŸL£åMíe	|F‰·Ça¶F0–û%Ds®ÇÆ Û±hµÇ_(èA–ßyàlËoc²›Á€³R²]2|ÏæÀXXœwaQ8»9E}	hÂ‡bç_§ºY,®¯Ÿ;Óßx-;F*fX¾¸¹¹ø5¸~¡ÿ’§1ZDcXØt°÷z±€c»zûˆJÄ³UáAG›Ñá·fûOÞ‡#0ì3v….¿-w-Ò+VÉ)Û^žú[hˆ(Ï›…«ŒdñBÍJHZ/Ñ×…K¶ L¨x¬QÊà@×¦W_ÎÉõ9NÒ­Ø)”õRyïOíïœ
+M÷}…wù­Ît?ðÕ±Uv»Ò?¯E¸*2tù
+¦æPkþ³˜‹*·^
+‡Ç'ÛK+"#8ÿ/Á“m©räû˜ÙÖ¸Z «¡›ÛÛÛp8~œhLi‰Û ÜÇ×°inoïîîn®ó8Yš”»›`sà@¿½t•ÚÛ©x5Yegõ¯.aI
+¡oRðû Š¢P>=MølçÅð‹è
+˜Zbµ¹Š/h%suù±ü9ÞÆRvs=ÇMæÑpX3y.0`¬ä[*©½_£Ÿlè%›N§w—JÑf‹=ßKÎ)?µm\"*¦tÔ*âú¼ád4Ð¡‹Ëˆ†S}O¬ÆíeáÝ$óñ i„`ÑA
+Y„.ïÆÃÝáEV„~ú…xCƒî£íŒ}ÿL+²ý¼Ÿâ-Ä’è~ÚŠBgGkåß?W¹"W¼&.`úŽ÷JsA¿/z7áÿ,yF­
+</BLOB>
+<BLOB blobid="2" size="737" compression="qt">
+  ÒxœÒ-ýXäYœZP[[½\r](]Þ^–_L``¸amb#bÙcdEdýeµfhg"gÔh‰iCiøj¬kallÎm„n:nðo¥p]qqËr~s4sêt u[vvÇwzx/xäyšzS{
+{½|s}+}á~—L€ €·m‚&‚Úƒ„E„û…²†k‡‡×ˆŠ‰B‰õŠ®‹aŒŒÎƒŽ<Žï¦`‘‘É’€“8“í”¤•W––Å—y˜/˜ç™ššR››¾œt,ßž˜ŸK  ¹¡m¢$¢Ù£‘¤J¤þ¥²¦g§§Ô¨‰©C©öª¬«d¬¬Í­„®=®ñ¯¥°]±±Ê²€³5³ì´¢µV¶¶Ã·x¸1¸ä¹œºQ»»¾¼s½)½ß¾•¿OÀÀ·ÁpÂ#ÂÙÃÄFÅ Å³ÆhÇÇÕÈŒÉ@ÉöÊ®ËcÌÌÎÍ„Î9ÎñÏ¨Ð\ÑÑÊÒ~Ó5ÓëÔ ÕXÖÖÃ×yØ/ØçÙœÚPÛÛ¼ÜrÝ)ÝßÞ™ßJàà¸ápâ#âÛãäEäüå³ægççÓè‹é?éöê«ëaììÍí„î;îïï¥ð]ññÉòó4óëô õYööÃ÷yø/øèùšúQûû¾ürý(ýàþ•ÿL  ·m$ÛIü³gÕŠ	@	ø
+°dÍ‡:ï¥^É~4í£VÄz0äQ¾s(à•J  ¹!m"&"Û#$E$û%³&h''Ó()?)÷*«+a,,Í-„.9.ð/¥0_11È2~363ê4£5X66Ç7y8.8é9š:P;;¼<u=*=ß>•?J@@·AnB#BÚC‘DFDþE±FiGGÕHŠIAIõJ«KbLLÎM…N9NïO¥P^QQËRS4SìT UVVVÄWyX.Xçlíeµ
+</BLOB>
+<BLOB blobid="3" size="983" compression="qt">
+  °ExœíØËvÚVÆñó¦„®è†;(¶W;Üõ»íô!ûmÉÄudÕ{7‹ï7 àþœ‹Žd;GDDDDtîîã‡ƒaœˆˆˆˆˆˆˆHI]Æ­þ S×‡Úlà‡Ã¡ÞµÆ½ÛYÅëz¿YÃÆ¨¿ªVUµ\Õ×ˆÛÕ1øår1WMþö_-³ÙL±«ìt¸¬*i«Ö±Ó÷r™­VˆÏuëÛín¿Ûn]%ñy×Yw©;Øn–‹…Ô1òétª3tœçõ^âÕr>_,æ2pÄ§í&.õÍºjçí‰V¼éïw_7›j>mæŸ€V¶_×+çÐD^ÚãñX±îÖÍ«Ô§c¡9ô´'M{¢¶ìoLô§ý¾“yoÝÜÜšµÏêÙò–nFiy~R~Žøf±@}ÑÜÔ,ê®jî¨s›Á;7W~†z·´™Ù¶k–|üÅ¤-WÛlrûù“M|"ws«‘»‰ÑsÄÿ¡>¶{pí³„]ýæÖòIâÓgÃ8™¸4î_][Æ¯ãVL}mºÞ×–c¿FýÒìr»ºFfñËÑèW«8ý _,Û–qÓ‘¿¸¸°lÆÝðbhXwe©ß,Š¿±ˆ»\?NDDDôŸÉ2³tš¥iÚ¾-Õ¿IúÚnâ§O:ñì¥6–ÍW¸(Rj_œæ¹,Ë"—%Äqªô<Z[/Š¦=$Q”:¿J´Kžç’nÛ¡$:».ÍrŒ7ÃkŽr2@<ðýd G6k4SEI…A¤4r‡j;ô4Iâ(NðŠ§——ÕŽ1ä0ŠãÁë¡óîd·£-›Ü÷ý Œ³×\ó_Ø ï½ö˜gì3L7â}ßã¢lgOðãwŸ¬ñ Ë™øLN›¼9oT¦?FBßÇWHó"—G¶‚F\Â€5Çµ†xQ²î:Ç\dÃÅ	ŽÄ‡Ã¡Òßk¿ßÇ~C<•|9”J\Ú÷<›¿=osÛK}¯çy^¯×÷ÃPºX@cÃù2é½^Wx^±û¢HçR“Åö=Ä;.Æý®';_¡2áÒ–¸,½üÌ÷uÚÎu\çt»íiˆ¹O”FÒít_ÞØy±nÜ¹/ÿöüw¿­}G/Tžu""""¢sõñ£aü/Ã6ÑÏîÙ²ýôd?víÇG³¶{|xx0‹£}oGÝpÞÏÖóïüiÕ~zFÝ*Ž#æhµáL·ºå	ãî-OËøýý]üøh8rË‰3g:ó–ÏQÖ»ÎòÉè§ò7Ä§ÊÚ
+</BLOB>
+<BLOB blobid="4" size="737" compression="qt">
+  ÒxœÒ-ýB'BÜCDGDþEµFiGGÓH‹I@IöJ«KbLLÏM„N:NñO¥P`QQÉRS4SëT UWVVÄWzX.XçY›ZQ[[½\w]*]Þ^˜_K``·anb#bÙc‘dHdüe³fgggÕhŒi?i÷j­kallÐm„n9nðo¥p]qqÉr~s8sët¢uXvvÄwyx/xåyšzQ{{¾|t})}à~”O€€¹o‚#‚Ùƒ„E„û…³†h‡‡ÔˆŠ‰?‰÷Š­‹bŒŒÏ…Ž;Žó¦]‘‘É’~“8“ê” •Y––Â—z˜.˜å™›šR››¼œt*Þž•ŸJ  ¸¡q¢$¢Ù£“¤E¤ý¥±¦i§§Ô¨‰©@©öª­«a¬¬Í­ƒ®;®ð¯§°\±±Ê²³4³ê´¢µX¶¶Ä·|¸0¸æ¹›ºS»»¾¼s½(½à¾”¿LÀÀ¸ÁoÂ'ÂÙÃÄEÄüÅ´ÆhÇÇÔÈ‹É?ÉõÊ±ËbÌÌÑÍƒÎ9ÎïÏ¦Ð^ÑÑÉÒ~Ó8ÓìÔ¡ÕXÖÖÃ×yØ.ØåÙšÚRÛÛ¼ÜrÝ*ÝÞÞ”ßLàà¸ámâ#âÙãäEäýå±æhççÔè‰é?éõê«ëcììÍí†î9îñï¦ð^ññÈòó5óîô¢õVööÃ÷xø/øäùúSûû½üsý)ýÞþ”ÿL   ¸n$ÙEû²iÔŒ	?	ö
+«cÍ…:ô¦]È~4ê¡ZÂx/äšS¿t)ß•N  ¸!o"("Ù#‘$H$û%´&h''Ô(Š)B)õ*«+b,,Ð-….:.ï/¦0\11È2353ê4¡5V66Ã7y808ç9›:Q;;½<t=+=ß>”?J@ @·AmB#–e°
+</BLOB>
+<BLOB blobid="5" size="211" compression="qt">
+  °ExœíÕ;nÃ0EQm8v!ñ#Ù^sFpâôA0SøœJÝÅ	pY           þnÎüæq|ì{~ü~ÅóëÇo¼`ûÊö[ê½W¥÷ñV“Þ#ÞBE|Î9Îåõ#vŸñÖ¶-=~¶çˆrHß~ìsŒñuÝZÉõå<íçð>òßµh¯Ïxz:¬KüóüëVìõšW¸Ý
+ã     À?º^ãŸ…mHöQØ¾\
+ã•Ã                      ÞÃT3B˜
+</BLOB>
+<BLOB blobid="6" size="737" compression="qt">
+  ÒxœÒ-ý)ö*¬+b,,Ð-ƒ.9.ô/¥0]11É2€353í4¢5V66Â7x828å9š:Q;;¼<t=*=Þ>—?N@@¹AnB$BÜCDGDûE±FlG GÕH‰ICIöJ¬KbLLÒM„N;NóO¦P]QQËR~S7SêT¤UWVVÄWyX2XæYšZP[[¼\s]+]ß^—_K``·aob&bÜcdEdüeµfhg!gÔhŒiCiøj­kdllÑm…n<nóo©p_qqÊr€s6sít¢uWvvÅw{x/xäyžzQ{{½|u})}à~”M€€¸p‚'‚Úƒ”„F„ý…µ†h‡‡ÔˆŒ‰?‰÷Š­‹aŒŒÎ†Ž9Žò§]‘‘É’€“6“ë” •X––Â—|˜/˜è™œšP››¿œs+Þž—ŸL  º¡o¢#¢Ú£¤H¤þ¥±¦g§§Ô¨Œ©@©÷ª¬«e¬¬Î­‡®;®ð¯¥°_±±Ê²ƒ³4³ì´¢µZ¶¶Ã·y¸/¸ç¹šºP»»¼¼u½(½á¾•¿LÀÀ»ÁmÂ(ÂÜÃÄFÄüÅ±ÆhÇÇÔÈ‰É?ÉöÊ¯ËeÌÌÐÍ†Î:ÎòÏ¥Ð]ÑÑËÒ~Ó4ÓëÔ ÕYÖÖÄ×{Ø0ØèÙœÚTÛÛ¼ÜrÝ*ÝáÞ˜ßJàà¸áoâ#âÜã‘äHäÿå±ælçç×è‰é?é÷ê¬ëcììÏí†î;îðï§ð]ññÉò€ó7óêô¤õVööÆ÷xø0øçùšúQûû¿ürý(ýßþ•ÿL   ºm'ÜEû²h!ÓŒ	@	ö
+°bÏˆ:ð©^È~5ë¢VÄx/åR¾u+Þ”K   ·!p"%"Ú#”$E$ý%´&j''Ô(Œ)C)õÉûg&
+</BLOB>
+<BLOB blobid="7" size="139" compression="qt">
+  ïºxœíÐ±	1 AµtËî¿²ûô£S&3,                                              žî€¢ku7”Í)Ý»» êÞî‚O{ÎÍÌ{~©ÙQsÏ”Ò˜S§;           `²<¼C
+</BLOB>
+<BLOB blobid="8" size="737" compression="qt">
+  ÒxœÒ-ýª]Éƒ6ë¢VÂz1ä›P
+¼x*Þ–N  ¸!r"$"Û#$E$û%²&g' 'Ó(Œ)A)ø*¬+c,,Î-ƒ.>.ï/«0^11Ì2353ë4¡5V66Æ7y8.8ä9›:R;;¾<v=*=ä>•?M@@¼ApB#BÛCDEDüE±FlGGØHŠIAIöJ¬KcLLÐMƒN;NôO¨P_QQÎR€S5SëT£UVVVÅWxX.XäYšZP[[½\t](]á^•_M``¹anb#bÝcdHdûe´fig#gÓhiAiõj«kdllÎm†n9nño§p^qqÊr€s9sêt uWvvÃwyx0xæyžzR{{¿|s}(}à~–J€ €¹p‚)‚Ùƒ„E„û…³†i‡ ‡×ˆ‰‰?‰öŠ«‹dŒŒÎ…Ž;Žò¨\‘‘É’“7“ë”¢•W––Â—}˜/˜è™›šR››½œs+Þž™ŸN   º¡n¢&¢Ú£¤K¤ü¥¶¦j§§Ù¨‹©A©÷ª¯«a¬¬Ð­ƒ®<®ð¯¥°^±±É²~³6³ï´¡µX¶¶Ä·x¸2¸ä¹ŸºQ»»¼¼r½*½â¾”¿JÀÀ¼ÁpÂ%ÂÚÃ“ÄGÄüÅ²ÆhÇ ÇÓÈŠÉBÉ÷Ê­ËdÌÌÍÍƒÎ9ÎïÏ¨Ð]ÑÑËÒÓ8ÓìÔ£ÕWÖÖÄ×xØ0ØæÙœÚRÛÛ¾ÜrÝ-ÝÞÞ–ßKà à¹ámâ%âßã‘äGäýå±æhççÔèŒéCéõê®ëbììÏíƒî>îðï§ð^ññÈò‚ó4óìô¤õXööÃ÷zø0øèù›úUûûÁütý*ýâþ•ÿK  ·p#ÚEþ²iÖŒ	C	õ
+«bÍ…:ð«Ä^fÙ
+</BLOB>
+<BLOB blobid="9" size="879" compression="qt">
+  °ExœíÚÙRÚ`Æñ÷*NëYG{Rm‹D«Ž"„öÅ—êX\¶@¼¹¾q¦—Ð<m}~Žœþù¾$_6DþkÀöú:²¾¶öÇý°M›Ÿ1á­-É|ÝÜÀÄÃØþöUÏf-ØÐs¹\Vë ­¾“Ë™¯˜¶äwrF&ŠïæuÞAñ½½üNv7¶1qwÝè°¸Ö³.žÏÁÚ²·›ÇÅ)}ûÉÿwPüà¸pt¸Š
+ÇG ¸NNPi‘R±ˆ‹‹Èz©TÂÅMÓ„µËå²	º™ÔAí¢Y¶Ê&f—+–Ê•Še– õ’iÙvE‡©›–ãØ–	ÙçÌrÅv³Ï™–Æu«k·j5©[éÇËVEãŽ]©TìÔãÉ¬»®cÛ¶“~<i×j5GUSëwëõš[­ºnêq©VkFÝumqkf³©3_«§¯Õ­V³i‹[o¶ÛZ¯×#o´:¤ÞH¿-ÒÔx§¥Û½‰¨w:Ýn»Õj!Ú¢í$i·;½^¯Ûn·ív·ßï÷º@[¤Ûë÷OµÞEÄ{½þÙÙ©×vRG´¥z® iuv~~¡qLÿüb0\È$>\^&uLüòêRó°øU’GÅ¯E®® q¹¹I>¯Qñ›ßß â‡þáÜÞãwwÀ8Òý=®ýSáâÃá×~xx@Å‡ÃÇÇGT\äñé	Çµ‰Ò7™ ãÓ)0.3d<@Æ1¸¶¥fŒG0F°üt‡>Î{r6Qíù"Š— ¸,Âå—ØäQN£1®ýìquÏù¸SêhDq´Œ^ m<Õør	YÝýÑ$ˆt}ußŸ¡žXâ°å}<×i‰!‹¬N{ˆ;µ@ãÓ Ôy‡ìíž§{{c®'t…ô:J ‡šè3½xÅ\¿zÞ8%Ý6xÉÚùhŠ{åù“ vNõ¼äfM˜/0™é"»_ZDª-“×i‡Õ±ÏE€ Û'Á<„Å§ÐAþj>Çµ¡&Ø·;Ð7,3äË¥·ºÃ½YÏÏÈºç!ë2‚Ö‰ˆþSÈ_
+î7DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDô¼{³qYYÁµß‡þ—ÇWW‘q`›ˆˆˆˆþ2¿ A&™>
+</BLOB>
+<BLOB blobid="10" size="737" compression="qt">
+  ÒxœÒ-ýï¥ð`ññÊò€ó4óêô õVööÄ÷xø.øåù›úQûû¾ürý(ýàþ˜ÿK  ¼p$ÚEû³g!Õ‹	C	ö
+­bÏ‡;ò¦]Ê5ì¡ZÃx0æœQ¾w(ß•L   ¸!m"$"Û#$E$ü%±&g''Ö()@)õ*¯+b,,Ï-„.9.ð/¦0\11É2„363í4¢5X66Å7x828ä9›:R;;¾<r=+=ß>–?J@@¸AqB$BÙC‘DFDûE³FlGGÕH‰IAIöJ¬KbLLÍM„N:NòO«P\QQÈR€S8SêT¡UXVVÄWyX1XäYšZP[[¿\t]*]à^–_J``·aob&bÙcdEdþe²figgÕh‹i@iûj®kbllÍm„n<nïo¥p\qqÊr~s5sêt u[vvÃw{x/xåyŸzR{{¼|v}(}à~˜J€€¹m‚(‚Ûƒ„F„û…³†i‡‡Óˆ‰‰?‰õŠ­‹cŒŒÎ†Ž:Žðª]‘‘É’“6“ê”¡•X––Ä—x˜.˜å™ššU››Áœt)Þž•ŸL  ¸¡o¢#¢Ù£‘¤G¤þ¥³¦h§§Ó¨Ž©?©úª­«a¬¬Î­ƒ®:®ñ¯¦°_±±Ê²€³4³ë´ µX¶¶Ã·z¸.¸æ¹›ºP»»½¼w½+½à¾™¿LÀÀºÁnÂ&ÂÙÃ”ÄEÄüÅ±ÆhÇÇØÈŠÉBÉûÊ¬ËaÌÌÎÍ„Î<ÎõÏ¦Ð\ÑÑËÒ€Ó5ÓëÔ¢ÕWÖÖÂ×|Ø/ØäÙšÚSÛÛ½ÜrÝ+ÝÞÞ™ßKàà»áoâ$âÝãäEäûå²ægççÖè‰éDé÷ê«ëaììÒí…î:îðï¥{ègb
+</BLOB>
+<BLOB blobid="11" size="807" compression="qt">
+  °ExœíÖÙRA†á¾¹$Ê&CôAÁ*£²Î°È& ;²‰Bn/ÿä<9
+õUÊï©‚^º«ûŸQêÏ,–¿ü¸m&0]¹¹rëî¨ì<<´í‚ÚF|Ï‹;v+*îrØ-¨}?:rîÛ@muär:¬Ÿaq—ÃòW.×WÓÎ'TÜé0ÃâJÙÍ;°}—'p¸ã†Ìw·wÏÝîoTÛÈÛÂŒz¬ã'ò8q o6ØEÿ]GÆ‰ˆˆè¿g¼D~ÌøÉ	´lÑÖy½5îóùaí¿Wþ@  ‹ƒÁ,®B—¸¶
+‡ñHD¾NOQõïìÌsŽ‰_…¼Ï9lÖœ{<¸Açóz}¨x@f,lÎeÈQqY;vÌáFÍå%nÎ…Ã°øÝÍU¶ðèÝõU“¾Æb·×˜¶R±x<ú¡ÚO$aqi'pñd2µ£ñT*ÅÔoñ»˜÷X,®iÉx—Ã®éè¼Ë-×u=•‚ÄU"©¥%®AâÉ”–Nëš®#âš–Îdt=†ÄõL6›ˆ¸Jgïï¥ž…Ä3¹|>' ñ\¾P¸xVây‰ç
+¥’Q/ âùb©T,Èêñb©\.
+Èq/–+•rI”ñ‰ mU®T«•ˆ?Tkµj¥RA´UEâµjµ
+‰Wkõú£ôAñFCòxí±Ñ0òx½Þ&Þh‰fW­V»ÝnµPíN§Ó†´•’v·Ûé€âÝn¯×Å›Ò–:¦Ýî= qÕí÷ûƒ¦-ñÁp0Å{ƒápøŠ?Izôª÷¥-@ñçÑx<ÅÕO&P['Óéª>2â/ øøe:‚Új2Í¦¨•«ù|>ƒ-ŸÏ`íÅ_,—óª¾”ø|Š¿¾.°øjµZ,¨øÛJvÕ~“‡Åßß0i±^¯ßaqµÙ ãj³Æ"ã`›ˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆh›öÑ€ˆˆˆˆˆˆˆˆˆˆèßØCÆmV\Ûn3m¹ð„VÓ
+</BLOB>
+<BLOB blobid="12" size="737" compression="qt">
+  ÒxœÒ-ýÎïÏ¥Ð\ÑÑÌÒ€Ó4ÓêÔ¦ÕWÖÖÅ×yØ0ØåÙœÚRÛÛ¼ÜrÝ,ÝßÞ”ßJàà·áoâ$âÜã‘äGäýå³ægççÕè‹é@éõê­ëfììÍí…î;îðï¦ð]ññÊòó7óíô¡õWööÆ÷yø/øäùšúQûû¿üsý*ýßþ•ÿJ  ¸m#Ù‘Gü³hÓ	?	÷
+±cÑ†9ó¥bÈ~6í¡WÄx/äœPÁu(â•L  ¹!o"&"Þ#$F$ü%µ&g''Õ()?)õ*¬+h,,Í-‡.;.ð/¦0\11Ê2ƒ363ë4¢5W66Ä7z808ç9›:P;;¾<s=*=ß>”?K@@¹ArB$BÙC‘DIDþE³FiGGÕHI@IõJ­KaLLÐMŠN:NñO¥P^QQÊRS6SêT¤UWVVÅWzX0XåY›ZP[
+[½\t]*]à^–_K``ºapb#bÛc‘dIdûe³fhggÓhŠi@iõj¯kcllÑm†n:nðo¦p]qqÌr€s5sìt£uWvvÈw{x1xäyœzR{{½|w}(}á~•J€€·m‚$‚Úƒ“„G„ý…³†h‡‡Óˆ‹‰?‰öŠ¬‹cŒŒÓ…Ž9Žñ©]‘‘Ì’“7“ê” •W––Æ—y˜/˜ä™šP››½œt(àž•ŸL  ¸¡m¢%¢Þ£¤H¤ü¥²¦h§!§Õ¨‹©@©øª­«c¬¬Ï­ƒ®9®ò¯¦°]±±Ë²³5³ê´ µX¶¶Æ·x¸1¸ä¹›ºP»»¾¼s½)½Þ¾—¿LÀÀ¸ÁoÂ&ÂÛÃ‘ÄGÅÅ²ÆiÇÇØÈŒÉ?É÷Ê­ËbÌÌÍÍ‡Î:Îò÷:f¹
+</BLOB>
+<BLOB blobid="13" size="607" compression="qt">
+  °ExœíÛËNQ ‡ñóxÚV5ñtÑx¡I•J0wf˜t¸D¹(j[‹µ¾\a×¤]¶üSçû-Ù|çÌ9&aÆ˜ßmnþáÃµy¥Œ       þ¶×ê À‹´µ%Œooã™¶±!ŒKÿEFöärÂx>/Œi    €_íì(ã»»Â¸ræÆ(ã…¢®ýæðHßÛ{«‹ïïêâÒ§Œ
+Â¸î7±wÊø‘ðKÆã™y±¨¼ìï…íR©¤‹ŸœÈÒYYÛ6–%ŒÛ¶®]©XºoYV¥üQUw­Êé©¨m»Ž].—EqÏsd«n»®k«N›ëúž£:nŽT=UÜó«ë8ªxPõ=MÛ8AÊâ~…ï‹â~­Vªšør³Ga(Š›8Ž"U<¬­ê‘&Åõ¤Šâ&©×ãš¬ÝlÖ“Do¤i3©‹êgçËxkâiÚjÆ¢‰›´Õ9CQ¼Óé¦†*Þí¶ÎEmÓîtÚ©¬nzÝ–¬Ýí÷RY¼7è·dõOƒA§­Š‡Ã¾ª½ªëÚ£‹]ÜŒFÂø¥²~u%¼îã+]{2ëâÓÉøRXd'}:èf>›
+}6›ÉÚæúæF7se}>×µïo…õû»;Y{¿®ùgáÌ‘E_ÔPy”Æ•õÅÃWaýAØ^,²T.9°^Oê Ùð]=€ŒÞMüxZ|“ÅŸŸei kÃ/€êƒì™‰¥@ø‹˜î-šÕ3qÂ¸ÑÝ:            ÀË“Ýçð         þWù¼0žË	ãÙðDVÁà
+</BLOB>
+<BLOB blobid="14" size="737" compression="qt">
+  ÒxœÒ-ý¨Œ©B©õª««b¬¬Î­†®9®ð¯©°\±±É²³4³ê´ µV¶¶Â·y¸1¸ä¹šºR»»¾¼r½)½ß¾”¿JÀÀ¸ÁoÂ(ÂÛÃ‘ÄEÄüÅ²ÆgÇ!ÇÚÈ‹É?É÷Ê¬ËbÌÌÑÍƒÎ:ÎõÏ¨Ð]ÑÑÉÒ€Ó4ÓíÔ£ÕWÖÖÄ×xØ/ØäÙ›ÚRÛ
+Û¼ÜrÝ.ÝáÞ–ßLàà·áqâ&âÚã‘äEäüå±ægççÕè‰é@é÷ê®ëbììÎíƒî;îïï«ð\ññÎò€ó4óîô£õVööÃ÷xø/øåù›úRûû¼üsý(ýÞþ•ÿJ   »n'ÛIû³jÓ‹	?	õ
+®eÏƒ9ò¥\Í~:ê¡WÂ{0äšR¾v)ß”L   ·!m"&"Ú#$I$ý%±&k''×(‹)?)ö*­+d,,Í-ƒ.9.ï/ª0_11Ê2343í4£5X66Â7z8/8å9›:U;;¾<s=(=ß>—?L@@¹AmB(BÛCDFDüE³FgG!GÔHŠIBIöJ®KcLLÏM„N=NïO§P^QQÊRS4SëT¢UXVVÃWyX3XæYšZQ[[½\s](]ß^–_K``¾asb'bÛc”dGdûe±fig!gÕhŠiCiöj¬kellÍm„n9nïoªp\qqÉr€s9sët uWvvÄwxx0xèy›zP{
+{½|r}*}ã~•J€€ºm‚%‚Þƒ„I„ý…²†g‡‡Øˆ‹‰@‰õŠ°‹cŒŒÒ…Ž9Žñ¥^‘‘Í’“5“ê” •W––Å—x˜0˜æ™ššQ››Âœs+ßž˜ŸL   ·¡s¢#¢Ú£¤F¤ý¥²¦i§ §Ù¨ŒX|g
+</BLOB>
+<BLOB blobid="15" size="146" compression="qt">
+  °ExœíÐ±ÂPÁß=–lìc„ £Oj a…˜i`ïÝ                     À¯;…íi
+ãéòQ.Ÿç0¾,a|]Ãø9ŒÏe|Ù¶.ßu)ãûžÖË8…[Ø¾^Ãøq„ñôíã^ÆŸ2¶á¼ê                 àCozÌ\
+</BLOB>

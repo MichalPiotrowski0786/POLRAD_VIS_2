@@ -1,5 +1,5 @@
 import main
 
 main.init()
-#GUI CODE HERE
+#GUI HERE
 main.run()
