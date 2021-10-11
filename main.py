@@ -5,6 +5,8 @@ import numpy as np
 import matplotlib.pyplot as pl
 import pandas as pd
 from matplotlib.colors import LinearSegmentedColormap
+import base64
+from io import BytesIO
 
 dbz = []
 vel = []
@@ -137,7 +139,7 @@ def compute():
     _min_data.append(float(slice['slicedata']['rawdata']['@min']))
     _max_data.append(float(slice['slicedata']['rawdata']['@max']))
 
-    _data[i] = _min_data[i] + _data[i] * (_max_data[i] - _min_data[i]) / 2 ** _depth_data[i]
+    _data[i] = _min_data[i] + _data[i] * (_max_data[i] - _min_data[i]) / 2**_depth_data[i]
 
     if(i == 1):
       spd = float(input('speed: '))
